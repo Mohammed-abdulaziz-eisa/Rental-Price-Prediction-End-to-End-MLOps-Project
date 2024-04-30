@@ -1,0 +1,1 @@
+It's all about putting machine learning (ML) models into action in real-world settings. We'll learn how to take those cool ML models you've built and make them work smoothly in the real world. We'll cover everything you need to know to turn your ML models into little operational programs, making sure they fit well and work effectively in a real-life production environment.
