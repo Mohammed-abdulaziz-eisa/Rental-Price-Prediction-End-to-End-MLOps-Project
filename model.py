@@ -3,6 +3,7 @@ from data_preparation import prepare_data
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.model_selection import GridSearchCV
+import pickle as pkl
 def build_model():
     # we need to train and save the model 
     
@@ -13,8 +14,11 @@ def build_model():
     X_train , X_test ,y_train , y_test  = split_data(X , y)
     Grid_rf = train_model(X_train, y_train)
     evalute_score = evalute_model(Grid_rf , X_test , y_test)
-    #print(r'Model Evalute Score : ' , evalute_score)
-    return r'Model Evalute Score : ' , evalute_score
+    print(r'Model Evalute Score : ' , evalute_score)
+    # Saving Model as pickle file we can load it any time we wanna to use it 
+    save_model(Grid_rf)
+    #return r'Model Evalute Score : ' , evalute_score
+
     
 def get_X_y(data):
     X = data[['area' ,
@@ -60,6 +64,11 @@ def train_model(X_train , y_train ):
     return model_grid.best_estimator_
 def evalute_model(model , X_test , y_test):
     return model.score(X_test , y_test)    
+
+
+def save_model(model):
+    with open ('./model/hypered_rf.pkl', 'wb') as f:
+        pkl.dump(model ,f )
 # test 
 df_get = build_model()
 print(df_get)
