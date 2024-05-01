@@ -48,7 +48,7 @@ def split_data(X , y):
 def train_model(X_train , y_train ):
     grid_param = {
     "n_estimators" : range(50 ,100 , 20),
-    "criterion" : ['mae'], 
+    "criterion": ['squared_error', 'poisson', 'absolute_error', 'friedman_mse'],
     "max_depth" : range(6 , 12 , 2)
     }
     grid = GridSearchCV(
