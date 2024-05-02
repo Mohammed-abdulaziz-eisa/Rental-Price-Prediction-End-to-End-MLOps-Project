@@ -1,6 +1,6 @@
 import pandas as pd 
-
-def load_data(path = './rent_apartments.csv'):
+from config import settings
+def load_data(path = settings.data_file_name):
     return pd.read_csv(path)
 
 

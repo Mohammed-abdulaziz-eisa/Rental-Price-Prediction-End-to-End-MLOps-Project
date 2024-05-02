@@ -4,6 +4,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.model_selection import GridSearchCV
 import pickle as pkl
+from config import settings
 def build_model():
     # we need to train and save the model 
     
@@ -67,7 +68,7 @@ def evalute_model(model , X_test , y_test):
 
 
 def save_model(model):
-    with open ('./model/hypered_rf.pkl', 'wb') as f:
+    with open (f'{settings.model_path}/{settings.model_name}', 'wb') as f:
         pkl.dump(model ,f )
 # test 
 df_get = build_model()
