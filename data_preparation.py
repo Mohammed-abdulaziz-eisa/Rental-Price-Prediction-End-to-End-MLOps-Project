@@ -93,9 +93,9 @@ def binarize_df(data):
         data[col] = label_binarizer.fit_transform(data[col])
     return data
 
-# Test the script
-df = prepare_data()
-print(df)
+# # Test the script
+# df = prepare_data()
+# print(df)
 
 
 # output 
