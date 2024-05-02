@@ -55,7 +55,7 @@ from data_collection import load_data
 from sklearn.preprocessing import LabelBinarizer
 
 def prepare_data():
-    print("Step 1 : Loading the data...")
+    #print("Step 1 : Loading the data...")
     data = load_data()
     data_encoded = encode_cat_cols(data)
     df = parse_garden_col(data_encoded)
@@ -64,7 +64,7 @@ def prepare_data():
     return df
 
 def encode_cat_cols(data):
-    print("Step 2 : Dummy encoding the data...")
+    #print("Step 2 : Dummy encoding the data...")
     return pd.get_dummies(data, 
                           columns = ['balcony',
                                     'parking', 
@@ -86,7 +86,7 @@ def parse_garden_col(data):
     return data
 
 def binarize_df(data):
-    print("Step 3 : Binarizing the data...")
+    #print("Step 3 : Binarizing the data...")
     binarizer_col = data[['balcony_yes' , 'storage_yes' , 'parking_yes' , 'furnished_yes' , 'garage_yes']]
     label_binarizer = LabelBinarizer()
     for col in binarizer_col:
