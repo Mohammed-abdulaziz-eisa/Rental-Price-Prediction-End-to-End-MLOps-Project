@@ -57,8 +57,11 @@ from sklearn.preprocessing import LabelBinarizer
 def prepare_data():
     #print("Step 1 : Loading the data...")
     data = load_data()
+    print("preprocessing the data...")
     data_encoded = encode_cat_cols(data)
+    print("Parsing the garden data...")
     df = parse_garden_col(data_encoded)
+    print("Binarizing the data...")
     df = binarize_df(df)
 
     return df
@@ -93,9 +96,9 @@ def binarize_df(data):
         data[col] = label_binarizer.fit_transform(data[col])
     return data
 
-# # Test the script
-# df = prepare_data()
-# print(df)
+# # test the script
+# baseline_data = prepare_data()
+# print(baseline_data)
 
 
 # output 
