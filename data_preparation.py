@@ -1,13 +1,13 @@
 import pandas as pd
 import re
-from data_collection import load_data
+from data_collection import load_data_from_db
 from sklearn.preprocessing import LabelBinarizer
 from loguru import logger
 def prepare_data():
     # make logger object to use it in the script
     logger.info("Starting up preprocessing Pipeline")
     # 1. load preprocessed dataset
-    data = load_data()
+    data = load_data_from_db()
     # 2. encode categorical data
     data_encoded = encode_cat_cols(data)
     # 3. parse the garden data
