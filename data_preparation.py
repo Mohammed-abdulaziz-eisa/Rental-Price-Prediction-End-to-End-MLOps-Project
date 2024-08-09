@@ -14,7 +14,7 @@ def prepare_data():
     df = parse_garden_col(data_encoded)
     # 4. binarize the data
     df = binarize_df(df)
-
+    
     return df
 
 def encode_cat_cols(data):
@@ -50,8 +50,6 @@ def binarize_df(data):
 # # test the script
 # baseline_data = prepare_data()
 # print(baseline_data)
-
-
 # output 
 
 '''
