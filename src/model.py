@@ -4,7 +4,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.model_selection import GridSearchCV
 import pickle as pkl
-from config import settings
+from config.config import settings
 
 from loguru import logger 
 def build_model():
