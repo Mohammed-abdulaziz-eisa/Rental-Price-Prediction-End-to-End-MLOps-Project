@@ -3,7 +3,7 @@ import pandas as pd
 from loguru import logger 
 
 from config.config import engine 
-from db_model import RentApartments
+from db.db_model import RentApartments
 from sqlalchemy import select 
 
 def load_data(path):
