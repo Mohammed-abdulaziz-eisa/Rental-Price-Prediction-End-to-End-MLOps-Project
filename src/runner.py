@@ -1,4 +1,4 @@
-from model_services import ModelService
+from models.model_services import ModelService
 from config.config import settings
 from loguru import logger
 

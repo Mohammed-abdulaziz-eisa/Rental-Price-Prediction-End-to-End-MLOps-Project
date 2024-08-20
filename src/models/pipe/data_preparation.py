@@ -1,6 +1,6 @@
 import pandas as pd
 import re
-from data_collection import load_data_from_db
+from models.pipe.data_collection import load_data_from_db
 from sklearn.preprocessing import LabelBinarizer
 from loguru import logger
 def prepare_data():
