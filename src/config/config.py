@@ -18,6 +18,6 @@ class Settings(BaseSettings):
 settings = Settings()
 # to remove the console output from loguru showing it only in the log file
 #logger.remove()
-logger.add("logs/app.log" , rotation= "1 day" , retention= "2 days" , compression= "zip" , level = settings.log_level)
+logger.add("logs/app.log" , rotation= "1 day" , retention= "2 days" , level = settings.log_level)
 
 engine = create_engine(settings.db_conn_str)
