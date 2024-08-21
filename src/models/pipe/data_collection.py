@@ -1,10 +1,10 @@
 import pandas as pd 
 #from config import settings
 from loguru import logger 
+from sqlalchemy import select 
 
 from config.config import engine 
 from db.db_model import RentApartments
-from sqlalchemy import select 
 
 def load_data(path):
     #print("Loading CSV file...")

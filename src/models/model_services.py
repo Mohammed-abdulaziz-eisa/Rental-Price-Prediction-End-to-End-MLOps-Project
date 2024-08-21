@@ -1,8 +1,12 @@
-from pathlib import Path
 import pickle as pk
+from pathlib import Path
+
+from loguru import logger 
+
+
 from config.config import settings
 from models.pipe.model import build_model
-from loguru import logger 
+
 class ModelService:
     def __init__(self):
         self.model = None

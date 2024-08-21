@@ -1,8 +1,11 @@
 import pandas as pd
 import re
-from models.pipe.data_collection import load_data_from_db
-from sklearn.preprocessing import LabelBinarizer
+
 from loguru import logger
+from sklearn.preprocessing import LabelBinarizer
+
+from models.pipe.data_collection import load_data_from_db
+
 def prepare_data():
     # make logger object to use it in the script
     logger.info("Starting up preprocessing Pipeline")

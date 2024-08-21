@@ -1,6 +1,7 @@
+from loguru import logger
+
 from models.model_services import ModelService
 from config.config import settings
-from loguru import logger
 
 @logger.catch
 def main():
