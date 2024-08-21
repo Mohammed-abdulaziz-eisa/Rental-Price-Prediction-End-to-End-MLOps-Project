@@ -64,13 +64,13 @@ class ModelService:
         Returns: 
              None
         """
-        logger.info(f"loading the model from directory : {settings.model_path}/{settings.model_name}")
+        logger.info(f'loading the model from directory : {settings.model_path}/{settings.model_name}')
         model_path = Path(f'{settings.model_path}/{settings.model_name}')
 
         if not model_path.exists():
-            logger.warning(f"model not found at {settings.model_path}/{settings.model_name}")
+            logger.warning(f'model not found at {settings.model_path}/{settings.model_name}')
             build_model()
-        logger.info(f"model {settings.model_name} exists --> loading model configuration file")
+        logger.info(f'model {settings.model_name} exists --> loading model configuration file')
         self.model = pk.load(open(f'{settings.model_path}/{settings.model_name}', 'rb'))
 
     def predict(self, input_parameters):
@@ -83,7 +83,7 @@ class ModelService:
         Returns:
             list: list of predicted values
         """
-        logger.info(f"input parameters : {input_parameters} making prediction !")
+        logger.info(f'input parameters : {input_parameters} making prediction !')
         return self.model.predict([input_parameters])
 # Test the script
 # ml_svc = ModelService()
