@@ -7,6 +7,10 @@ This project is an end-to-end MLOps pipeline for predicting rental prices. The s
 ## Project Structure
 
 ```bash
+│
+notebook/
+│   └── model_baseline.ipynb   # Baseline notebook for model evaluation
+.
 src/
 │
 ├── config/                    # Configuration files
