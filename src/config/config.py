@@ -1,16 +1,7 @@
-# data_file_name ----> path to our csv file in collection.py
-# model_path ------> the folder containing model config file 
-# model_name ------> name of the model we should use 
-from pydantic_settings import BaseSettings ,  SettingsConfigDict
-from pydantic import DirectoryPath #, FilePath 
-from loguru import logger
-from sqlalchemy import create_engine
-
-class Settings(BaseSettings):
-    """
-    Settings class for managing application configuaraiton and settings.
-
-    This class is designed to handle the application's configuration and settings.
+"""
+    This Module is used for configuring the application's settings.
+    
+    Setting Module is designed to handle the application's configuration and settings.
     including model configuration , data file paths , model names , log levels , 
     database connection string and table name. it's use Pydantic for validation 
     and management of the settings . the class is subclass of `BaseSettings`
@@ -26,10 +17,19 @@ class Settings(BaseSettings):
         - rent_apart_table_name : Table name for rent apartment data.
         
     Logging is handled by loguru, with settings configured to output logs to a file 
-    (`logs/app.log`)and retaining logs for two days (`2 days`).
+    and save them in a log file called "app.log" in the current directory.
     
-    The class also intializes the database engine (SQLAlchemy) for database connections using 
-    the provided connection string.
+    Database connection string is used to connect to the database.
+    
+"""
+from pydantic_settings import BaseSettings ,  SettingsConfigDict
+from pydantic import DirectoryPath #, FilePath 
+from loguru import logger
+from sqlalchemy import create_engine
+
+class Settings(BaseSettings):
+    """
+    Settings class for managing application configuaraiton and settings.
     
     Args:
         BaseSettings (BaseSettings): Pydantic settings class for settings management.
