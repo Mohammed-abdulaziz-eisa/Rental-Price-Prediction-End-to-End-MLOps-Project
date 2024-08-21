@@ -48,7 +48,7 @@ The project is organized as follows:
 - **Flask**: Web framework for API deployment.
 - **Celery**: Asynchronous task queue.
 - **Docker**: Containerization for deploying the entire pipeline.
-- **MongoDB**: NoSQL database for storing prediction results.
+- **DBeaver**: Database management tool. 
 - **Pickle**: Model serialization and deserialization.
 
 ## Key Features
