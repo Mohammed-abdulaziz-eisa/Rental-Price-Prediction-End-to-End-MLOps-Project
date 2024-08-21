@@ -7,6 +7,39 @@ from loguru import logger
 from sqlalchemy import create_engine
 
 class Settings(BaseSettings):
+    """
+    Settings class for managing application configuaraiton and settings.
+
+    This class is designed to handle the application's configuration and settings.
+    including model configuration , data file paths , model names , log levels , 
+    database connection string and table name. it's use Pydantic for validation 
+    and management of the settings . the class is subclass of `BaseSettings`
+    from Pydantic. Which ensures type of validation and settings management.
+    
+    Kay components:
+        - model_config : Pydantic settings class for the model configuration for enviromnent 
+                        variables in `.env` loading and encoding using `SettingsConfigDict`
+        - model_path : Directory path where the model is stored in the filesystem
+        - model_name : Name of the model.
+        - log_level : Loging level for the connection string. 
+        - db_conn_str : Database connections string.
+        - rent_apart_table_name : Table name for rent apartment data.
+        
+    Logging is handled by loguru, with settings configured to output logs to a file 
+    (`logs/app.log`)and retaining logs for two days (`2 days`).
+    
+    The class also intializes the database engine (SQLAlchemy) for database connections using 
+    the provided connection string.
+    
+    Args:
+        BaseSettings (BaseSettings): Pydantic settings class for settings management.
+        
+    Usage:
+        - Instantiate the `Settings` class to load and validate configuration settings from
+        the `config/.env` file.
+        
+        -  Configure Loguru for file-based logging and set up the SQLAlchemy engine for database. 
+    """
     model_config = SettingsConfigDict(env_file = 'config/.env' , env_file_encoding= 'UTF-8')
     #data_file_name : FilePath
     model_path : DirectoryPath
