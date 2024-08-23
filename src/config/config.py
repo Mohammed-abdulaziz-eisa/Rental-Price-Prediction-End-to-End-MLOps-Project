@@ -37,7 +37,6 @@ class Settings(BaseSettings):
     Usage:
         - Instantiate the `Settings` class to load and validate configuration settings from
         the `config/.env` file.
-        
         -  Configure Loguru for file-based logging and set up the SQLAlchemy engine for database. 
     """
     model_config = SettingsConfigDict(env_file = 'config/.env' , env_file_encoding= 'UTF-8')
