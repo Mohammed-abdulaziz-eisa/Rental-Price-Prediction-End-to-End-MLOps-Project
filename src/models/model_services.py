@@ -45,11 +45,11 @@ class ModelService:
     predict(self, input_parameters) : Makes a prediction using the loaded model by passing input parameters
     
     """
-    def __init__(self):
+    def __init__(self) -> None:
         """ Initializes the model object """
         self.model = None
 
-    def load_model(self):
+    def load_model(self) -> None:
         """
         Function that loads the model from a pickle file if it exists else builds one
         
@@ -64,16 +64,32 @@ class ModelService:
         Returns: 
              None
         """
-        logger.info(f'loading the model from directory : {settings.model_path}/{settings.model_name}')
-        model_path = Path(f'{settings.model_path}/{settings.model_name}')
+        logger.info(f'checking the existance of the model config file at '
+                    f'{settings.model_path}/{settings.model_name}',
+                    )
+        
+        model_path = Path(
+                          f'{settings.model_path}/{settings.model_name}',
+                          )
 
         if not model_path.exists():
-            logger.warning(f'model not found at {settings.model_path}/{settings.model_name}')
+            logger.warning(
+                f'model not found at {settings.model_path} '
+                f'building {settings.model_name}', 
+            )
+            
             build_model()
-        logger.info(f'model {settings.model_name} exists --> loading model configuration file')
-        self.model = pk.load(open(f'{settings.model_path}/{settings.model_name}', 'rb'))
+            
+        logger.info(
+            f'model {settings.model_name} exists --> '
+            'loading model configuration file',
+            
+        )
+        
+        with open(model_path , 'rb') as model_file:
+            self.model = pk.load(model_file)
 
-    def predict(self, input_parameters):
+    def predict(self, input_parameters :list) -> list:
         """
         Function that makes a prediction using the loaded model by passing input parameters
 
@@ -83,7 +99,11 @@ class ModelService:
         Returns:
             list: list of predicted values
         """
-        logger.info(f'input parameters : {input_parameters} making prediction !')
+        logger.info(
+            f'input parameters : {input_parameters} ',
+            f'making prediction !',
+            
+        )
         return self.model.predict([input_parameters])
 # Test the script
 # ml_svc = ModelService()

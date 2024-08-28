@@ -1,3 +1,16 @@
+"""
+    This module is dedicated to preparing data for the machine learning pipeline by performing essential preprocessing tasks.
+
+    The `prepare_data` function orchestrates the data preparation workflow, which includes:
+    1. Loading the preprocessed dataset from the database.
+    2. Encoding categorical features to prepare them for model ingestion.
+    3. Parsing and transforming specific textual data, such as garden information.
+    4. Binarizing certain columns to convert them into a binary format suitable for model training.
+
+    Logging with Loguru is integrated throughout the process to ensure that each step is tracked and any issues are promptly identified.
+    Logs are saved to the "app.log" file in the current directory, providing detailed insights into the data preparation pipeline.
+"""
+
 import pandas as pd
 import re
 
@@ -7,6 +20,18 @@ from sklearn.preprocessing import LabelBinarizer
 from models.pipe.data_collection import load_data_from_db
 
 def prepare_data():
+    """
+        Prepares the dataset for the machine learning pipeline by executing the necessary preprocessing steps.
+
+            The function performs the following operations:
+            1. Loads the preprocessed dataset from the database.
+            2. Encodes categorical features using one-hot encoding.
+            3. Parses and processes the garden data column.
+            4. Binarizes specified columns to convert them into a binary format.
+
+        Returns:
+            DataFrame: A pandas DataFrame containing the fully prepared data, ready for model training.
+    """
     # make logger object to use it in the script
     logger.info("Starting up preprocessing Pipeline")
     # 1. load preprocessed dataset
@@ -21,6 +46,18 @@ def prepare_data():
     return df
 
 def encode_cat_cols(data):
+    """
+        Encodes categorical features into a binary format using one-hot encoding.
+
+        This function targets specific columns that require encoding to avoid issues with multicollinearity. 
+        The `pandas.get_dummies` function is used to perform the encoding.
+
+        Args:
+            data (DataFrame): The DataFrame containing the categorical data to be encoded.
+        
+        Returns:
+            DataFrame: The DataFrame with encoded categorical features.
+    """
     cols = ['balcony','parking','furnished','garage','storage']
     logger.info(f"Dummy encoding the data {cols}")
     #print("Step 2 : Dummy encoding the data...")
@@ -37,11 +74,35 @@ def encode_cat_cols(data):
 #             data.garden[i] = int(re.findall(r'\d+', data.garden[i])[0])
 #     return data 
 def parse_garden_col(data):
+    """
+        Parses and transforms the 'garden' column from textual data to a numerical format.
+
+        The function identifies whether a garden is present and extracts the size of the garden if applicable. 
+        The `re` module is utilized to find numerical values within the textual data.
+
+        Args:
+            data (DataFrame): The DataFrame containing the 'garden' column to be parsed.
+
+        Returns:
+            DataFrame: The DataFrame with the 'garden' column transformed into a numerical format.
+    """
     logger.info("Parsing the garden data...")
     data['garden'] = data['garden'].apply(lambda x : 0 if  x == "Not present" else int(re.findall(r'\d+', x)[0]))
     return data
 
-def binarize_df(data):
+def binarize_df(data):    
+    """
+        Converts specified columns into a binary format.
+
+        The function uses the `LabelBinarizer` from `sklearn.preprocessing` to transform columns into binary values. 
+        This is particularly useful for features that are already binary but represented as categorical variables.
+
+        Args:
+            data (DataFrame): The DataFrame containing columns to be binarized.
+
+        Returns:
+            DataFrame: The DataFrame with binarized columns.
+    """
     #print("Step 3 : Binarizing the data...")
     binarizer_col = data[['balcony_yes' , 'storage_yes' , 'parking_yes' , 'furnished_yes' , 'garage_yes']]
     logger.info(f"Binarizing the data {binarizer_col}")

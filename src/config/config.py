@@ -39,17 +39,42 @@ class Settings(BaseSettings):
         the `config/.env` file.
         -  Configure Loguru for file-based logging and set up the SQLAlchemy engine for database. 
     """
-    model_config = SettingsConfigDict(env_file = 'config/.env' , env_file_encoding= 'UTF-8')
+    model_config = SettingsConfigDict(
+        env_file = 'config/.env' ,
+        env_file_encoding= 'UTF-8' ,
+        protected_namespaces= ['settings_'],
+        )
     #data_file_name : FilePath
     model_path : DirectoryPath
     model_name : str 
     log_level : str
     db_conn_str : str 
     rent_apart_table_name : str
+    
+    
+def configure_logging(log_level: str) -> None:
+    """
+    Configure the logging for the application.
 
+    Arg:
+        log_level (str): The log level to be set for the logger.
+
+    Return:
+        None
+    """
+
+    # to remove the console output from loguru showing it only in the log file
+    #logger.remove()
+    logger.add(
+        "logs/app.log" ,
+        rotation= "1 week" ,
+        retention= "2 weeks" ,
+        level =log_level,
+    )
+    
+# intializing the setting an logging configure 
 settings = Settings()
-# to remove the console output from loguru showing it only in the log file
-#logger.remove()
-logger.add("logs/app.log" , rotation= "1 day" , retention= "2 days" , level = settings.log_level)
+configure_logging(log_level= settings.log_level)
 
+# Create a database engine 
 engine = create_engine(settings.db_conn_str)
