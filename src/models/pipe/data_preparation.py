@@ -11,6 +11,7 @@
     Logs are saved to the "app.log" file in the current directory, providing detailed insights into the data preparation pipeline.
 """
 
+
 import pandas as pd
 import re
 
@@ -18,6 +19,7 @@ from loguru import logger
 from sklearn.preprocessing import LabelBinarizer
 
 from models.pipe.data_collection import load_data_from_db
+
 
 def prepare_data():
     """
@@ -45,6 +47,7 @@ def prepare_data():
     
     return df
 
+
 def encode_cat_cols(data):
     """
         Encodes categorical features into a binary format using one-hot encoding.
@@ -64,7 +67,8 @@ def encode_cat_cols(data):
     return pd.get_dummies(data, 
                           columns = cols, 
                           drop_first=True)
-
+    
+    
 # def parse_garden_col(data):
 #     print("Parsing the garden data...")
 #     for i in range(len(data)):
@@ -90,6 +94,7 @@ def parse_garden_col(data):
     data['garden'] = data['garden'].apply(lambda x : 0 if  x == "Not present" else int(re.findall(r'\d+', x)[0]))
     return data
 
+
 def binarize_df(data):    
     """
         Converts specified columns into a binary format.
@@ -110,6 +115,7 @@ def binarize_df(data):
     for col in binarizer_col:
         data[col] = label_binarizer.fit_transform(data[col])
     return data
+
 
 # # test the script
 # baseline_data = prepare_data()

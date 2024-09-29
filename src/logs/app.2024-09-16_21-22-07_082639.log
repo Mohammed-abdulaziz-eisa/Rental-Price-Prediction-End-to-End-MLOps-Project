@@ -1,0 +1,240 @@
+2024-09-16 21:22:07.079 | INFO     | models.pipe.model:build_model:37 - starting up model building Pipleline
+2024-09-16 21:22:07.082 | INFO     | models.pipe.data_preparation:prepare_data:36 - Starting up preprocessing Pipeline
+2024-09-16 21:22:07.082 | INFO     | models.pipe.data_collection:load_data_from_db:39 - extracting the table from the database ...
+2024-09-16 21:22:07.106 | INFO     | models.pipe.data_preparation:encode_cat_cols:62 - Dummy encoding the data ['balcony', 'parking', 'furnished', 'garage', 'storage']
+2024-09-16 21:22:07.113 | INFO     | models.pipe.data_preparation:parse_garden_col:89 - Parsing the garden data...
+2024-09-16 21:22:07.124 | INFO     | models.pipe.data_preparation:binarize_df:108 - Binarizing the data       balcony_yes  storage_yes  parking_yes  furnished_yes  garage_yes
+0            True        False        False           True       False
+1            True        False         True           True       False
+2            True        False         True           True       False
+3            True        False        False           True       False
+4           False        False        False          False       False
+...           ...          ...          ...            ...         ...
+1723        False        False        False           True       False
+1724         True        False        False           True       False
+1725        False        False        False           True       False
+1726         True         True         True           True       False
+1727        False         True        False           True       False
+
+[1728 rows x 5 columns]
+2024-09-16 21:22:07.134 | INFO     | models.pipe.model:get_X_y:78 - X shape : (1728, 9) , y shape : (1728,)
+2024-09-16 21:22:07.134 | INFO     | models.pipe.model:split_data:100 - splitting data into train and test sets 
+2024-09-16 21:22:07.137 | INFO     | models.pipe.model:train_model:123 - training a model with hyperparameters
+2024-09-16 21:22:07.137 | DEBUG    | models.pipe.model:train_model:129 - grid param : {'n_estimators': range(50, 100, 20), 'criterion': ['squared_error', 'poisson', 'absolute_error', 'friedman_mse'], 'max_depth': range(6, 12, 2)}
+2024-09-16 21:22:24.703 | INFO     | models.pipe.model:evalute_model:156 - evaluting the model performance with score : 0.719531429042986
+2024-09-16 21:22:24.712 | INFO     | models.pipe.model:save_model:172 - saving the model to directory : models/model/hypered.pkl
+2024-09-16 21:22:24.720 | INFO     | __main__:main:33 - running the runner script ...
+2024-09-16 21:22:24.720 | INFO     | models.model_services:load_model:67 - checking the existance of the model config file at models/model/hypered.pkl
+2024-09-16 21:22:24.720 | INFO     | models.model_services:load_model:83 - model hypered.pkl exists --> loading model configuration file
+2024-09-16 21:22:24.726 | INFO     | models.model_services:predict:102 - input parameters : [85, 2015, 2, 20, 1, 1, 0, 0, 1] 
+2024-09-16 21:22:24.732 | INFO     | __main__:main:37 - the predication is : [2074.90762787] From the model : hypered.pkl
+2024-09-17 02:02:06.936 | INFO     | models.pipe.model:build_model:37 - starting up model building Pipleline
+2024-09-17 02:02:06.937 | INFO     | models.pipe.data_preparation:prepare_data:36 - Starting up preprocessing Pipeline
+2024-09-17 02:02:06.937 | INFO     | models.pipe.data_collection:load_data_from_db:39 - extracting the table from the database ...
+2024-09-17 02:02:06.962 | INFO     | models.pipe.data_preparation:encode_cat_cols:62 - Dummy encoding the data ['balcony', 'parking', 'furnished', 'garage', 'storage']
+2024-09-17 02:02:06.969 | INFO     | models.pipe.data_preparation:parse_garden_col:89 - Parsing the garden data...
+2024-09-17 02:02:06.977 | INFO     | models.pipe.data_preparation:binarize_df:108 - Binarizing the data       balcony_yes  storage_yes  parking_yes  furnished_yes  garage_yes
+0            True        False        False           True       False
+1            True        False         True           True       False
+2            True        False         True           True       False
+3            True        False        False           True       False
+4           False        False        False          False       False
+...           ...          ...          ...            ...         ...
+1723        False        False        False           True       False
+1724         True        False        False           True       False
+1725        False        False        False           True       False
+1726         True         True         True           True       False
+1727        False         True        False           True       False
+
+[1728 rows x 5 columns]
+2024-09-17 02:02:06.986 | INFO     | models.pipe.model:get_X_y:78 - X shape : (1728, 9) , y shape : (1728,)
+2024-09-17 02:02:06.987 | INFO     | models.pipe.model:split_data:100 - splitting data into train and test sets 
+2024-09-17 02:02:06.988 | INFO     | models.pipe.model:train_model:123 - training a model with hyperparameters
+2024-09-17 02:02:06.989 | DEBUG    | models.pipe.model:train_model:129 - grid param : {'n_estimators': range(50, 100, 20), 'criterion': ['squared_error', 'poisson', 'absolute_error', 'friedman_mse'], 'max_depth': range(6, 12, 2)}
+2024-09-17 02:02:19.861 | INFO     | models.pipe.model:evalute_model:156 - evaluting the model performance with score : 0.729251654654645
+2024-09-17 02:02:19.865 | INFO     | models.pipe.model:save_model:172 - saving the model to directory : models/model/hypered.pkl
+2024-09-17 02:02:19.872 | INFO     | __main__:main:33 - running the runner script ...
+2024-09-17 02:02:19.872 | INFO     | models.model_services:load_model:67 - checking the existance of the model config file at models/model/hypered.pkl
+2024-09-17 02:02:19.872 | INFO     | models.model_services:load_model:83 - model hypered.pkl exists --> loading model configuration file
+2024-09-17 02:02:19.877 | INFO     | models.model_services:predict:102 - input parameters : [85, 2015, 2, 20, 1, 1, 0, 0, 1] 
+2024-09-17 02:02:19.880 | INFO     | __main__:main:37 - the predication is : [1988.49174723] From the model : hypered.pkl
+2024-09-17 13:37:22.166 | INFO     | models.pipe.model:build_model:37 - starting up model building Pipleline
+2024-09-17 13:37:22.167 | INFO     | models.pipe.data_preparation:prepare_data:36 - Starting up preprocessing Pipeline
+2024-09-17 13:37:22.167 | INFO     | models.pipe.data_collection:load_data_from_db:39 - extracting the table from the database ...
+2024-09-17 13:37:22.192 | INFO     | models.pipe.data_preparation:encode_cat_cols:62 - Dummy encoding the data ['balcony', 'parking', 'furnished', 'garage', 'storage']
+2024-09-17 13:37:22.200 | INFO     | models.pipe.data_preparation:parse_garden_col:89 - Parsing the garden data...
+2024-09-17 13:37:22.209 | INFO     | models.pipe.data_preparation:binarize_df:108 - Binarizing the data       balcony_yes  storage_yes  parking_yes  furnished_yes  garage_yes
+0            True        False        False           True       False
+1            True        False         True           True       False
+2            True        False         True           True       False
+3            True        False        False           True       False
+4           False        False        False          False       False
+...           ...          ...          ...            ...         ...
+1723        False        False        False           True       False
+1724         True        False        False           True       False
+1725        False        False        False           True       False
+1726         True         True         True           True       False
+1727        False         True        False           True       False
+
+[1728 rows x 5 columns]
+2024-09-17 13:37:22.218 | INFO     | models.pipe.model:get_X_y:78 - X shape : (1728, 9) , y shape : (1728,)
+2024-09-17 13:37:22.219 | INFO     | models.pipe.model:split_data:100 - splitting data into train and test sets 
+2024-09-17 13:37:22.221 | INFO     | models.pipe.model:train_model:123 - training a model with hyperparameters
+2024-09-17 13:37:22.221 | DEBUG    | models.pipe.model:train_model:129 - grid param : {'n_estimators': range(50, 100, 20), 'criterion': ['squared_error', 'poisson', 'absolute_error', 'friedman_mse'], 'max_depth': range(6, 12, 2)}
+2024-09-17 13:37:37.126 | INFO     | models.pipe.model:evalute_model:156 - evaluting the model performance with score : 0.7111143607657513
+2024-09-17 13:37:37.132 | INFO     | models.pipe.model:save_model:172 - saving the model to directory : models/model/hypered.pkl
+2024-09-17 13:37:37.137 | INFO     | __main__:main:33 - running the runner script ...
+2024-09-17 13:37:37.137 | INFO     | models.model_services:load_model:67 - checking the existance of the model config file at models/model/hypered.pkl
+2024-09-17 13:37:37.138 | INFO     | models.model_services:load_model:83 - model hypered.pkl exists --> loading model configuration file
+2024-09-17 13:37:37.142 | INFO     | models.model_services:predict:102 - input parameters : [85, 2015, 2, 20, 1, 1, 0, 0, 1] 
+2024-09-17 13:37:37.147 | INFO     | __main__:main:37 - the predication is : [1947.07587421] From the model : hypered.pkl
+2024-09-17 13:38:34.046 | INFO     | models.pipe.model:build_model:37 - starting up model building Pipleline
+2024-09-17 13:38:34.047 | INFO     | models.pipe.data_preparation:prepare_data:36 - Starting up preprocessing Pipeline
+2024-09-17 13:38:34.047 | INFO     | models.pipe.data_collection:load_data_from_db:39 - extracting the table from the database ...
+2024-09-17 13:38:34.068 | INFO     | models.pipe.data_preparation:encode_cat_cols:62 - Dummy encoding the data ['balcony', 'parking', 'furnished', 'garage', 'storage']
+2024-09-17 13:38:34.072 | INFO     | models.pipe.data_preparation:parse_garden_col:89 - Parsing the garden data...
+2024-09-17 13:38:34.080 | INFO     | models.pipe.data_preparation:binarize_df:108 - Binarizing the data       balcony_yes  storage_yes  parking_yes  furnished_yes  garage_yes
+0            True        False        False           True       False
+1            True        False         True           True       False
+2            True        False         True           True       False
+3            True        False        False           True       False
+4           False        False        False          False       False
+...           ...          ...          ...            ...         ...
+1723        False        False        False           True       False
+1724         True        False        False           True       False
+1725        False        False        False           True       False
+1726         True         True         True           True       False
+1727        False         True        False           True       False
+
+[1728 rows x 5 columns]
+2024-09-17 13:38:34.087 | INFO     | models.pipe.model:get_X_y:78 - X shape : (1728, 9) , y shape : (1728,)
+2024-09-17 13:38:34.087 | INFO     | models.pipe.model:split_data:100 - splitting data into train and test sets 
+2024-09-17 13:38:34.089 | INFO     | models.pipe.model:train_model:123 - training a model with hyperparameters
+2024-09-17 13:38:34.089 | DEBUG    | models.pipe.model:train_model:129 - grid param : {'n_estimators': range(50, 100, 20), 'criterion': ['squared_error', 'poisson', 'absolute_error', 'friedman_mse'], 'max_depth': range(6, 12, 2)}
+2024-09-17 13:38:51.344 | INFO     | models.pipe.model:evalute_model:156 - evaluting the model performance with score : 0.706065594856811
+2024-09-17 13:38:51.349 | INFO     | models.pipe.model:save_model:172 - saving the model to directory : models/model/hypered.pkl
+2024-09-17 13:38:51.353 | INFO     | __main__:main:33 - running the runner script ...
+2024-09-17 13:38:51.353 | INFO     | models.model_services:load_model:67 - checking the existance of the model config file at models/model/hypered.pkl
+2024-09-17 13:38:51.353 | INFO     | models.model_services:load_model:83 - model hypered.pkl exists --> loading model configuration file
+2024-09-17 13:38:51.356 | INFO     | models.model_services:predict:102 - input parameters : [85, 2015, 2, 20, 1, 1, 0, 0, 1] 
+2024-09-17 13:38:51.359 | INFO     | __main__:main:37 - the predication is : [1976.83] From the model : hypered.pkl
+2024-09-17 13:39:29.492 | INFO     | models.pipe.model:build_model:37 - starting up model building Pipleline
+2024-09-17 13:39:29.493 | INFO     | models.pipe.data_preparation:prepare_data:36 - Starting up preprocessing Pipeline
+2024-09-17 13:39:29.493 | INFO     | models.pipe.data_collection:load_data_from_db:39 - extracting the table from the database ...
+2024-09-17 13:39:29.515 | INFO     | models.pipe.data_preparation:encode_cat_cols:62 - Dummy encoding the data ['balcony', 'parking', 'furnished', 'garage', 'storage']
+2024-09-17 13:39:29.519 | INFO     | models.pipe.data_preparation:parse_garden_col:89 - Parsing the garden data...
+2024-09-17 13:39:29.527 | INFO     | models.pipe.data_preparation:binarize_df:108 - Binarizing the data       balcony_yes  storage_yes  parking_yes  furnished_yes  garage_yes
+0            True        False        False           True       False
+1            True        False         True           True       False
+2            True        False         True           True       False
+3            True        False        False           True       False
+4           False        False        False          False       False
+...           ...          ...          ...            ...         ...
+1723        False        False        False           True       False
+1724         True        False        False           True       False
+1725        False        False        False           True       False
+1726         True         True         True           True       False
+1727        False         True        False           True       False
+
+[1728 rows x 5 columns]
+2024-09-17 13:39:29.536 | INFO     | models.pipe.model:get_X_y:78 - X shape : (1728, 9) , y shape : (1728,)
+2024-09-17 13:39:29.536 | INFO     | models.pipe.model:split_data:100 - splitting data into train and test sets 
+2024-09-17 13:39:29.538 | INFO     | models.pipe.model:train_model:123 - training a model with hyperparameters
+2024-09-17 13:39:29.538 | DEBUG    | models.pipe.model:train_model:129 - grid param : {'n_estimators': range(50, 100, 20), 'criterion': ['squared_error', 'poisson', 'absolute_error', 'friedman_mse'], 'max_depth': range(6, 12, 2)}
+2024-09-17 13:39:44.819 | INFO     | models.pipe.model:evalute_model:156 - evaluting the model performance with score : 0.7188607760570463
+2024-09-17 13:39:44.824 | INFO     | models.pipe.model:save_model:172 - saving the model to directory : models/model/hypered.pkl
+2024-09-17 13:39:44.829 | INFO     | __main__:main:33 - running the runner script ...
+2024-09-17 13:39:44.829 | INFO     | models.model_services:load_model:67 - checking the existance of the model config file at models/model/hypered.pkl
+2024-09-17 13:39:44.830 | INFO     | models.model_services:load_model:83 - model hypered.pkl exists --> loading model configuration file
+2024-09-17 13:39:44.841 | INFO     | models.model_services:predict:102 - input parameters : [85, 2015, 2, 20, 1, 1, 0, 0, 1] 
+2024-09-17 13:39:44.855 | INFO     | __main__:main:37 - the predication is : [2035.03804684] From the model : hypered.pkl
+2024-09-17 13:45:35.649 | INFO     | models.pipe.model:build_model:37 - starting up model building Pipleline
+2024-09-17 13:45:35.650 | INFO     | models.pipe.data_preparation:prepare_data:36 - Starting up preprocessing Pipeline
+2024-09-17 13:45:35.650 | INFO     | models.pipe.data_collection:load_data_from_db:39 - extracting the table from the database ...
+2024-09-17 13:45:35.682 | INFO     | models.pipe.data_preparation:encode_cat_cols:62 - Dummy encoding the data ['balcony', 'parking', 'furnished', 'garage', 'storage']
+2024-09-17 13:45:35.690 | INFO     | models.pipe.data_preparation:parse_garden_col:89 - Parsing the garden data...
+2024-09-17 13:45:35.699 | INFO     | models.pipe.data_preparation:binarize_df:108 - Binarizing the data       balcony_yes  storage_yes  parking_yes  furnished_yes  garage_yes
+0            True        False        False           True       False
+1            True        False         True           True       False
+2            True        False         True           True       False
+3            True        False        False           True       False
+4           False        False        False          False       False
+...           ...          ...          ...            ...         ...
+1723        False        False        False           True       False
+1724         True        False        False           True       False
+1725        False        False        False           True       False
+1726         True         True         True           True       False
+1727        False         True        False           True       False
+
+[1728 rows x 5 columns]
+2024-09-17 13:45:35.710 | INFO     | models.pipe.model:get_X_y:78 - X shape : (1728, 9) , y shape : (1728,)
+2024-09-17 13:45:35.710 | INFO     | models.pipe.model:split_data:100 - splitting data into train and test sets 
+2024-09-17 13:45:35.712 | INFO     | models.pipe.model:train_model:123 - training a model with hyperparameters
+2024-09-17 13:45:35.713 | DEBUG    | models.pipe.model:train_model:129 - grid param : {'n_estimators': range(50, 100, 20), 'criterion': ['squared_error', 'poisson', 'absolute_error', 'friedman_mse'], 'max_depth': range(6, 12, 2)}
+2024-09-17 13:45:51.128 | INFO     | models.pipe.model:evalute_model:156 - evaluting the model performance with score : 0.7078945661765275
+2024-09-17 13:45:51.134 | INFO     | models.pipe.model:save_model:172 - saving the model to directory : models/model/hypered.pkl
+2024-09-17 13:45:51.139 | INFO     | __main__:main:33 - running the runner script ...
+2024-09-17 13:45:51.139 | INFO     | models.model_services:load_model:67 - checking the existance of the model config file at models/model/hypered.pkl
+2024-09-17 13:45:51.140 | INFO     | models.model_services:load_model:83 - model hypered.pkl exists --> loading model configuration file
+2024-09-17 13:45:51.144 | INFO     | models.model_services:predict:102 - input parameters : [85, 2015, 2, 20, 1, 1, 0, 0, 1] 
+2024-09-17 13:45:51.148 | INFO     | __main__:main:37 - the predication is : [1927.78847715] From the model : hypered.pkl
+2024-09-17 13:47:24.450 | INFO     | models.pipe.model:build_model:37 - starting up model building Pipleline
+2024-09-17 13:47:24.450 | INFO     | models.pipe.data_preparation:prepare_data:36 - Starting up preprocessing Pipeline
+2024-09-17 13:47:24.450 | INFO     | models.pipe.data_collection:load_data_from_db:39 - extracting the table from the database ...
+2024-09-17 13:47:24.472 | INFO     | models.pipe.data_preparation:encode_cat_cols:62 - Dummy encoding the data ['balcony', 'parking', 'furnished', 'garage', 'storage']
+2024-09-17 13:47:24.476 | INFO     | models.pipe.data_preparation:parse_garden_col:89 - Parsing the garden data...
+2024-09-17 13:47:24.483 | INFO     | models.pipe.data_preparation:binarize_df:108 - Binarizing the data       balcony_yes  storage_yes  parking_yes  furnished_yes  garage_yes
+0            True        False        False           True       False
+1            True        False         True           True       False
+2            True        False         True           True       False
+3            True        False        False           True       False
+4           False        False        False          False       False
+...           ...          ...          ...            ...         ...
+1723        False        False        False           True       False
+1724         True        False        False           True       False
+1725        False        False        False           True       False
+1726         True         True         True           True       False
+1727        False         True        False           True       False
+
+[1728 rows x 5 columns]
+2024-09-17 13:47:24.492 | INFO     | models.pipe.model:get_X_y:78 - X shape : (1728, 9) , y shape : (1728,)
+2024-09-17 13:47:24.493 | INFO     | models.pipe.model:split_data:100 - splitting data into train and test sets 
+2024-09-17 13:47:24.494 | INFO     | models.pipe.model:train_model:123 - training a model with hyperparameters
+2024-09-17 13:47:24.495 | DEBUG    | models.pipe.model:train_model:129 - grid param : {'n_estimators': range(50, 100, 20), 'criterion': ['squared_error', 'poisson', 'absolute_error', 'friedman_mse'], 'max_depth': range(6, 12, 2)}
+2024-09-17 13:47:39.709 | INFO     | models.pipe.model:evalute_model:156 - evaluting the model performance with score : 0.7164169187082304
+2024-09-17 13:47:39.716 | INFO     | models.pipe.model:save_model:172 - saving the model to directory : models/model/hypered.pkl
+2024-09-17 13:47:39.721 | INFO     | __main__:main:33 - running the runner script ...
+2024-09-17 13:47:39.721 | INFO     | models.model_services:load_model:67 - checking the existance of the model config file at models/model/hypered.pkl
+2024-09-17 13:47:39.722 | INFO     | models.model_services:load_model:83 - model hypered.pkl exists --> loading model configuration file
+2024-09-17 13:47:39.725 | INFO     | models.model_services:predict:102 - input parameters : [85, 2015, 2, 20, 1, 1, 0, 0, 1] 
+2024-09-17 13:47:39.730 | INFO     | __main__:main:37 - the predication is : [1996.05184839] From the model : hypered.pkl
+2024-09-17 14:18:30.321 | INFO     | models.pipe.model:build_model:37 - starting up model building Pipleline
+2024-09-17 14:18:30.322 | INFO     | models.pipe.data_preparation:prepare_data:36 - Starting up preprocessing Pipeline
+2024-09-17 14:18:30.322 | INFO     | models.pipe.data_collection:load_data_from_db:39 - extracting the table from the database ...
+2024-09-17 14:18:30.353 | INFO     | models.pipe.data_preparation:encode_cat_cols:62 - Dummy encoding the data ['balcony', 'parking', 'furnished', 'garage', 'storage']
+2024-09-17 14:18:30.361 | INFO     | models.pipe.data_preparation:parse_garden_col:89 - Parsing the garden data...
+2024-09-17 14:18:30.372 | INFO     | models.pipe.data_preparation:binarize_df:108 - Binarizing the data       balcony_yes  storage_yes  parking_yes  furnished_yes  garage_yes
+0            True        False        False           True       False
+1            True        False         True           True       False
+2            True        False         True           True       False
+3            True        False        False           True       False
+4           False        False        False          False       False
+...           ...          ...          ...            ...         ...
+1723        False        False        False           True       False
+1724         True        False        False           True       False
+1725        False        False        False           True       False
+1726         True         True         True           True       False
+1727        False         True        False           True       False
+
+[1728 rows x 5 columns]
+2024-09-17 14:18:30.382 | INFO     | models.pipe.model:get_X_y:78 - X shape : (1728, 9) , y shape : (1728,)
+2024-09-17 14:18:30.382 | INFO     | models.pipe.model:split_data:100 - splitting data into train and test sets 
+2024-09-17 14:18:30.384 | INFO     | models.pipe.model:train_model:123 - training a model with hyperparameters
+2024-09-17 14:18:30.384 | DEBUG    | models.pipe.model:train_model:129 - grid param : {'n_estimators': range(50, 100, 20), 'criterion': ['squared_error', 'poisson', 'absolute_error', 'friedman_mse'], 'max_depth': range(6, 12, 2)}
+2024-09-17 14:18:45.638 | INFO     | models.pipe.model:evalute_model:156 - evaluting the model performance with score : 0.7115588403347611
+2024-09-17 14:18:45.643 | INFO     | models.pipe.model:save_model:172 - saving the model to directory : models/model/hypered.pkl
+2024-09-17 14:18:45.648 | INFO     | __main__:main:33 - running the runner script ...
+2024-09-17 14:18:45.649 | INFO     | models.model_services:load_model:67 - checking the existance of the model config file at models/model/hypered.pkl
+2024-09-17 14:18:45.649 | INFO     | models.model_services:load_model:83 - model hypered.pkl exists --> loading model configuration file
+2024-09-17 14:18:45.652 | INFO     | models.model_services:predict:102 - input parameters : [85, 2015, 2, 20, 1, 1, 0, 0, 1] 
+2024-09-17 14:18:45.656 | INFO     | __main__:main:37 - the predication is : [2022.68234633] From the model : hypered.pkl

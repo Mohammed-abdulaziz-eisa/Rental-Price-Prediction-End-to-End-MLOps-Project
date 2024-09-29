@@ -11,9 +11,11 @@
     Logging is integrated with Loguru to track the model building process, providing insights into each step's status and potential issues.
 """
 
+
 import pandas as pd 
 import pickle as pkl
 
+from loguru import logger 
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.model_selection import GridSearchCV
@@ -22,10 +24,7 @@ from config.config import settings
 from models.pipe.data_preparation import prepare_data   
 
 
-from loguru import logger 
-
 def build_model():
-    
     """
         Coordinates the end-to-end process of building, training, and saving the machine learning model.
         The `build_model` function orchestrates the entire model building process
@@ -47,8 +46,8 @@ def build_model():
     # Saving Model as pickle file we can load it any time we wanna to use it 
     save_model(Grid_rf)
     #return r'Model Evalute Score : ' , evalute_score
-
     
+           
 def get_X_y(data):
     """
        Extracts feature variable (X) and target variable (y) from the prepared data.
@@ -101,11 +100,14 @@ def split_data(X , y):
     X_train , X_test , y_train , y_test = train_test_split(X , y , test_size= 0.2 , random_state = 42)
     return X_train , X_test , y_train , y_test
 
+
 # def train_model(X_train, X_test , y_train , y_test):
 #     rf = RandomForestRegressor()
 #     rf.fit(X_train , y_train)
 #     model_score = rf.score(X_test , y_test)
 #     return model_score
+
+
 def train_model(X_train , y_train ):
     """ 
         Trains a Random Forest Regressor model with hyperparameter using GridSearchCV.
@@ -138,6 +140,8 @@ def train_model(X_train , y_train ):
     #best_model_score = model_grid.best_score_
     #print("Train score: " , model_grid.best_score_)
     return model_grid.best_estimator_
+
+
 def evalute_model(model , X_test , y_test):
     """ 
         Evaluates the performance of the trained Random Forest Regerssor on the data.
@@ -172,6 +176,8 @@ def save_model(model):
     logger.info(f"saving the model to directory : {settings.model_path}/{settings.model_name}")
     with open (f'{settings.model_path}/{settings.model_name}', 'wb') as f:
         pkl.dump(model ,f )
+        
+        
 # test 
 df_get = build_model()
 #print(df_get)

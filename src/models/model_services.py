@@ -16,14 +16,18 @@
     based on the provided input parameters.
     
 """
+
 # standard library packages
 import pickle as pk
-from pathlib import Path
+
 # third party packages
 from loguru import logger 
+from pathlib import Path
+
 # local packages
 from config.config import settings
 from models.pipe.model import build_model
+
 
 class ModelService:
     """
@@ -45,6 +49,7 @@ class ModelService:
     predict(self, input_parameters) : Makes a prediction using the loaded model by passing input parameters
     
     """
+    
     def __init__(self) -> None:
         """ Initializes the model object """
         self.model = None
@@ -88,7 +93,7 @@ class ModelService:
         
         with open(model_path , 'rb') as model_file:
             self.model = pk.load(model_file)
-
+            
     def predict(self, input_parameters :list) -> list:
         """
         Function that makes a prediction using the loaded model by passing input parameters
@@ -105,6 +110,7 @@ class ModelService:
             
         )
         return self.model.predict([input_parameters])
+
 # Test the script
 # ml_svc = ModelService()
 # ml_svc.load_model()

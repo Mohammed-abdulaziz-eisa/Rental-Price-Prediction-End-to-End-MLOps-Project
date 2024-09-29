@@ -6,15 +6,18 @@
         - RentApartments : Database model for rent apartment data.
        
 """
-
+# third-part library
 from sqlalchemy import REAL , INTEGER , VARCHAR
 from sqlalchemy.orm import DeclarativeBase , Mapped , mapped_column
 
+# local application imports
 from config.config import settings
+
 
 class Base(DeclarativeBase):
     """ Base class for ORM model. """
     pass
+
 
 class RentApartments(Base):
     
@@ -58,4 +61,5 @@ class RentApartments(Base):
     facilities: Mapped[str] = mapped_column(VARCHAR())
     zip: Mapped[str] = mapped_column(VARCHAR())
     neighborhood: Mapped[str] = mapped_column(VARCHAR())
-    rent: Mapped[int] = mapped_column(INTEGER()) 
+    rent: Mapped[int] = mapped_column(INTEGER())
+

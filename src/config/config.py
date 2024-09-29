@@ -22,10 +22,13 @@
     Database connection string is used to connect to the database.
     
 """
-from pydantic_settings import BaseSettings ,  SettingsConfigDict
-from pydantic import DirectoryPath #, FilePath 
+# third-part library 
 from loguru import logger
 from sqlalchemy import create_engine
+
+from pydantic_settings import BaseSettings ,  SettingsConfigDict
+from pydantic import DirectoryPath #, FilePath
+
 
 class Settings(BaseSettings):
     """
@@ -71,7 +74,7 @@ def configure_logging(log_level: str) -> None:
         retention= "2 weeks" ,
         level =log_level,
     )
-    
+
 # intializing the setting an logging configure 
 settings = Settings()
 configure_logging(log_level= settings.log_level)

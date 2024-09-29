@@ -10,10 +10,12 @@
     Logging is integrated with Loguru, capturing all events, including errors and exceptions
     to facilitate debugging and monitoring of script execution.
 """
+
 from loguru import logger
 
 from models.model_services import ModelService
 from config.config import settings
+
 
 @logger.catch
 def main():
@@ -35,6 +37,7 @@ def main():
     ml_svc.load_model()
     pred = ml_svc.predict([85 , 2015 , 2 ,20 , 1 ,1 ,0 ,0 ,1])
     logger.info(f"the predication is : {pred} From the model : {settings.model_name}")
+
     
 if __name__ == '__main__':
     main()

@@ -9,6 +9,7 @@
 """
 
 import pandas as pd 
+
 #from config import settings
 from loguru import logger 
 from sqlalchemy import select 
@@ -16,14 +17,13 @@ from sqlalchemy import select
 from config.config import engine 
 from db.db_model import RentApartments
 
+
 def load_data(path):
     #print("Loading CSV file...")
     # for short message we can use info 
     logger.info(f"Loading CSV file at path {path}")
     return pd.read_csv(path)
-# # test 
-# df = load_data()
-# print(df)
+
 
 
 def load_data_from_db():
