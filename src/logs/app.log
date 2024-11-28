@@ -358,3 +358,153 @@
 2024-11-27 14:23:20.243 | INFO     | models.model_services:load_model:88 - model base_rf.pkl exists --> loading model configuration file
 2024-11-27 14:23:20.246 | INFO     | models.model_services:predict:107 - input parameters : [85, 2015, 2, 20, 1, 1, 0, 0, 1] 
 2024-11-27 14:23:20.248 | INFO     | __main__:main:39 - the predication is : [2034.84404762] From the model : base_rf.pkl
+2024-11-27 14:39:21.391 | INFO     | models.pipe.model:build_model:36 - starting up model building Pipleline
+2024-11-27 14:39:21.392 | INFO     | models.pipe.data_preparation:prepare_data:38 - Starting up preprocessing Pipeline
+2024-11-27 14:39:21.392 | INFO     | models.pipe.data_collection:load_data_from_db:39 - extracting the table from the database ...
+2024-11-27 14:39:21.417 | INFO     | models.pipe.data_preparation:encode_cat_cols:65 - Dummy encoding the data ['balcony', 'parking', 'furnished', 'garage', 'storage']
+2024-11-27 14:39:21.425 | INFO     | models.pipe.data_preparation:parse_garden_col:93 - Parsing the garden data...
+2024-11-27 14:39:21.434 | INFO     | models.pipe.data_preparation:binarize_df:113 - Binarizing the data       balcony_yes  storage_yes  parking_yes  furnished_yes  garage_yes
+0            True        False        False           True       False
+1            True        False         True           True       False
+2            True        False         True           True       False
+3            True        False        False           True       False
+4           False        False        False          False       False
+...           ...          ...          ...            ...         ...
+1723        False        False        False           True       False
+1724         True        False        False           True       False
+1725        False        False        False           True       False
+1726         True         True         True           True       False
+1727        False         True        False           True       False
+
+[1728 rows x 5 columns]
+2024-11-27 14:39:21.443 | INFO     | models.pipe.model:get_X_y:77 - X shape : (1728, 9) , y shape : (1728,)
+2024-11-27 14:39:21.443 | INFO     | models.pipe.model:split_data:99 - splitting data into train and test sets 
+2024-11-27 14:39:21.446 | INFO     | models.pipe.model:train_model:125 - training a model with hyperparameters
+2024-11-27 14:39:21.446 | DEBUG    | models.pipe.model:train_model:131 - grid param : {'n_estimators': range(50, 100, 20), 'criterion': ['squared_error', 'poisson', 'absolute_error', 'friedman_mse'], 'max_depth': range(6, 12, 2)}
+2024-11-27 14:39:34.858 | INFO     | models.pipe.model:evalute_model:160 - evaluting the model performance with score : 0.7009424741610715
+2024-11-27 14:39:34.863 | INFO     | models.pipe.model:save_model:176 - saving the model to directory : models/model/base_rf.pkl
+2024-11-27 14:39:34.867 | INFO     | __main__:main:35 - running the runner script ...
+2024-11-27 14:39:34.868 | INFO     | models.model_services:load_model:72 - checking the existance of the model config file at models/model/base_rf.pkl
+2024-11-27 14:39:34.868 | INFO     | models.model_services:load_model:88 - model base_rf.pkl exists --> loading model configuration file
+2024-11-27 14:39:34.871 | INFO     | models.model_services:predict:107 - input parameters : [85, 2015, 2, 20, 1, 1, 0, 0, 1] 
+2024-11-27 14:39:34.874 | INFO     | __main__:main:39 - the predication is : [2013.21447475] From the model : base_rf.pkl
+2024-11-27 14:39:41.200 | INFO     | models.pipe.model:build_model:36 - starting up model building Pipleline
+2024-11-27 14:39:41.200 | INFO     | models.pipe.data_preparation:prepare_data:38 - Starting up preprocessing Pipeline
+2024-11-27 14:39:41.200 | INFO     | models.pipe.data_collection:load_data_from_db:39 - extracting the table from the database ...
+2024-11-27 14:39:41.217 | INFO     | models.pipe.data_preparation:encode_cat_cols:65 - Dummy encoding the data ['balcony', 'parking', 'furnished', 'garage', 'storage']
+2024-11-27 14:39:41.220 | INFO     | models.pipe.data_preparation:parse_garden_col:93 - Parsing the garden data...
+2024-11-27 14:39:41.227 | INFO     | models.pipe.data_preparation:binarize_df:113 - Binarizing the data       balcony_yes  storage_yes  parking_yes  furnished_yes  garage_yes
+0            True        False        False           True       False
+1            True        False         True           True       False
+2            True        False         True           True       False
+3            True        False        False           True       False
+4           False        False        False          False       False
+...           ...          ...          ...            ...         ...
+1723        False        False        False           True       False
+1724         True        False        False           True       False
+1725        False        False        False           True       False
+1726         True         True         True           True       False
+1727        False         True        False           True       False
+
+[1728 rows x 5 columns]
+2024-11-27 14:39:41.234 | INFO     | models.pipe.model:get_X_y:77 - X shape : (1728, 9) , y shape : (1728,)
+2024-11-27 14:39:41.234 | INFO     | models.pipe.model:split_data:99 - splitting data into train and test sets 
+2024-11-27 14:39:41.235 | INFO     | models.pipe.model:train_model:125 - training a model with hyperparameters
+2024-11-27 14:39:41.235 | DEBUG    | models.pipe.model:train_model:131 - grid param : {'n_estimators': range(50, 100, 20), 'criterion': ['squared_error', 'poisson', 'absolute_error', 'friedman_mse'], 'max_depth': range(6, 12, 2)}
+2024-11-27 14:39:53.452 | INFO     | models.pipe.model:evalute_model:160 - evaluting the model performance with score : 0.7042389795865507
+2024-11-27 14:39:53.455 | INFO     | models.pipe.model:save_model:176 - saving the model to directory : models/model/base_rf.pkl
+2024-11-27 14:39:53.459 | INFO     | __main__:main:35 - running the runner script ...
+2024-11-27 14:39:53.459 | INFO     | models.model_services:load_model:72 - checking the existance of the model config file at models/model/base_rf.pkl
+2024-11-27 14:39:53.459 | INFO     | models.model_services:load_model:88 - model base_rf.pkl exists --> loading model configuration file
+2024-11-27 14:39:53.461 | INFO     | models.model_services:predict:107 - input parameters : [85, 2015, 2, 20, 1, 1, 0, 0, 1] 
+2024-11-27 14:39:53.464 | INFO     | __main__:main:39 - the predication is : [2026.38529013] From the model : base_rf.pkl
+2024-11-27 14:40:02.037 | INFO     | models.pipe.model:build_model:36 - starting up model building Pipleline
+2024-11-27 14:40:02.038 | INFO     | models.pipe.data_preparation:prepare_data:38 - Starting up preprocessing Pipeline
+2024-11-27 14:40:02.038 | INFO     | models.pipe.data_collection:load_data_from_db:39 - extracting the table from the database ...
+2024-11-27 14:40:02.054 | INFO     | models.pipe.data_preparation:encode_cat_cols:65 - Dummy encoding the data ['balcony', 'parking', 'furnished', 'garage', 'storage']
+2024-11-27 14:40:02.058 | INFO     | models.pipe.data_preparation:parse_garden_col:93 - Parsing the garden data...
+2024-11-27 14:40:02.064 | INFO     | models.pipe.data_preparation:binarize_df:113 - Binarizing the data       balcony_yes  storage_yes  parking_yes  furnished_yes  garage_yes
+0            True        False        False           True       False
+1            True        False         True           True       False
+2            True        False         True           True       False
+3            True        False        False           True       False
+4           False        False        False          False       False
+...           ...          ...          ...            ...         ...
+1723        False        False        False           True       False
+1724         True        False        False           True       False
+1725        False        False        False           True       False
+1726         True         True         True           True       False
+1727        False         True        False           True       False
+
+[1728 rows x 5 columns]
+2024-11-27 14:40:02.071 | INFO     | models.pipe.model:get_X_y:77 - X shape : (1728, 9) , y shape : (1728,)
+2024-11-27 14:40:02.072 | INFO     | models.pipe.model:split_data:99 - splitting data into train and test sets 
+2024-11-27 14:40:02.073 | INFO     | models.pipe.model:train_model:125 - training a model with hyperparameters
+2024-11-27 14:40:02.073 | DEBUG    | models.pipe.model:train_model:131 - grid param : {'n_estimators': range(50, 100, 20), 'criterion': ['squared_error', 'poisson', 'absolute_error', 'friedman_mse'], 'max_depth': range(6, 12, 2)}
+2024-11-27 14:40:14.339 | INFO     | models.pipe.model:evalute_model:160 - evaluting the model performance with score : 0.7145953934592059
+2024-11-27 14:40:14.342 | INFO     | models.pipe.model:save_model:176 - saving the model to directory : models/model/base_rf.pkl
+2024-11-27 14:40:14.345 | INFO     | __main__:main:35 - running the runner script ...
+2024-11-27 14:40:14.345 | INFO     | models.model_services:load_model:72 - checking the existance of the model config file at models/model/base_rf.pkl
+2024-11-27 14:40:14.346 | INFO     | models.model_services:load_model:88 - model base_rf.pkl exists --> loading model configuration file
+2024-11-27 14:40:14.347 | INFO     | models.model_services:predict:107 - input parameters : [85, 2015, 2, 20, 1, 1, 0, 0, 1] 
+2024-11-27 14:40:14.350 | INFO     | __main__:main:39 - the predication is : [1991.16473779] From the model : base_rf.pkl
+2024-11-27 14:51:06.255 | INFO     | models.pipe.model:build_model:36 - starting up model building Pipleline
+2024-11-27 14:51:06.255 | INFO     | models.pipe.data_preparation:prepare_data:38 - Starting up preprocessing Pipeline
+2024-11-27 14:51:06.256 | INFO     | models.pipe.data_collection:load_data_from_db:39 - extracting the table from the database ...
+2024-11-27 14:51:06.272 | INFO     | models.pipe.data_preparation:encode_cat_cols:65 - Dummy encoding the data ['balcony', 'parking', 'furnished', 'garage', 'storage']
+2024-11-27 14:51:06.275 | INFO     | models.pipe.data_preparation:parse_garden_col:93 - Parsing the garden data...
+2024-11-27 14:51:06.282 | INFO     | models.pipe.data_preparation:binarize_df:113 - Binarizing the data       balcony_yes  storage_yes  parking_yes  furnished_yes  garage_yes
+0            True        False        False           True       False
+1            True        False         True           True       False
+2            True        False         True           True       False
+3            True        False        False           True       False
+4           False        False        False          False       False
+...           ...          ...          ...            ...         ...
+1723        False        False        False           True       False
+1724         True        False        False           True       False
+1725        False        False        False           True       False
+1726         True         True         True           True       False
+1727        False         True        False           True       False
+
+[1728 rows x 5 columns]
+2024-11-27 14:51:06.289 | INFO     | models.pipe.model:get_X_y:77 - X shape : (1728, 9) , y shape : (1728,)
+2024-11-27 14:51:06.289 | INFO     | models.pipe.model:split_data:99 - splitting data into train and test sets 
+2024-11-27 14:51:06.290 | INFO     | models.pipe.model:train_model:125 - training a model with hyperparameters
+2024-11-27 14:51:06.290 | DEBUG    | models.pipe.model:train_model:131 - grid param : {'n_estimators': range(50, 100, 20), 'criterion': ['squared_error', 'poisson', 'absolute_error', 'friedman_mse'], 'max_depth': range(6, 12, 2)}
+2024-11-27 14:51:18.576 | INFO     | models.pipe.model:evalute_model:160 - evaluting the model performance with score : 0.7268846446766493
+2024-11-27 14:51:18.582 | INFO     | models.pipe.model:save_model:176 - saving the model to directory : models/model/base_rf.pkl
+2024-11-27 14:51:18.588 | INFO     | __main__:main:35 - running the runner script ...
+2024-11-27 14:51:18.589 | INFO     | models.model_services:load_model:72 - checking the existance of the model config file at models/model/base_rf.pkl
+2024-11-27 14:51:18.589 | INFO     | models.model_services:load_model:88 - model base_rf.pkl exists --> loading model configuration file
+2024-11-27 14:51:18.593 | INFO     | models.model_services:predict:107 - input parameters : [85, 2015, 2, 20, 1, 1, 0, 0, 1] 
+2024-11-27 14:51:18.597 | INFO     | __main__:main:39 - the predication is : [1931.17268071] From the model : base_rf.pkl
+2024-11-28 13:13:11.614 | INFO     | models.pipe.model:build_model:36 - starting up model building Pipleline
+2024-11-28 13:13:11.614 | INFO     | models.pipe.data_preparation:prepare_data:38 - Starting up preprocessing Pipeline
+2024-11-28 13:13:11.614 | INFO     | models.pipe.data_collection:load_data_from_db:39 - extracting the table from the database ...
+2024-11-28 13:13:11.642 | INFO     | models.pipe.data_preparation:encode_cat_cols:65 - Dummy encoding the data ['balcony', 'parking', 'furnished', 'garage', 'storage']
+2024-11-28 13:13:11.650 | INFO     | models.pipe.data_preparation:parse_garden_col:93 - Parsing the garden data...
+2024-11-28 13:13:11.660 | INFO     | models.pipe.data_preparation:binarize_df:113 - Binarizing the data       balcony_yes  storage_yes  parking_yes  furnished_yes  garage_yes
+0            True        False        False           True       False
+1            True        False         True           True       False
+2            True        False         True           True       False
+3            True        False        False           True       False
+4           False        False        False          False       False
+...           ...          ...          ...            ...         ...
+1723        False        False        False           True       False
+1724         True        False        False           True       False
+1725        False        False        False           True       False
+1726         True         True         True           True       False
+1727        False         True        False           True       False
+
+[1728 rows x 5 columns]
+2024-11-28 13:13:11.669 | INFO     | models.pipe.model:get_X_y:77 - X shape : (1728, 9) , y shape : (1728,)
+2024-11-28 13:13:11.669 | INFO     | models.pipe.model:split_data:99 - splitting data into train and test sets 
+2024-11-28 13:13:11.671 | INFO     | models.pipe.model:train_model:125 - training a model with hyperparameters
+2024-11-28 13:13:11.671 | DEBUG    | models.pipe.model:train_model:131 - grid param : {'n_estimators': range(50, 100, 20), 'criterion': ['squared_error', 'poisson', 'absolute_error', 'friedman_mse'], 'max_depth': range(6, 12, 2)}
+2024-11-28 13:13:24.863 | INFO     | models.pipe.model:evalute_model:160 - evaluting the model performance with score : 0.7142458651806354
+2024-11-28 13:13:24.869 | INFO     | models.pipe.model:save_model:176 - saving the model to directory : models/model/base_rf.pkl
+2024-11-28 13:13:24.877 | INFO     | __main__:main:35 - running the runner script ...
+2024-11-28 13:13:24.877 | INFO     | models.model_services:load_model:72 - checking the existance of the model config file at models/model/base_rf.pkl
+2024-11-28 13:13:24.877 | INFO     | models.model_services:load_model:88 - model base_rf.pkl exists --> loading model configuration file
+2024-11-28 13:13:24.881 | INFO     | models.model_services:predict:107 - input parameters : [85, 2015, 2, 20, 1, 1, 0, 0, 1] 
+2024-11-28 13:13:24.886 | INFO     | __main__:main:39 - the predication is : [2002.41297417] From the model : base_rf.pkl
