@@ -1,3 +1,6 @@
+.PHONY: install run clean check
+.DEFAULT_GOAL:= runner  
+
 run: install 
 	cd src; poetry run python3 runner.py
 
@@ -8,3 +11,9 @@ install: pyproject.toml
 clean:
 	rm -rf `find . -name "__pycache__"`
 	rm -rf `find . -name ".DS_Store"`
+	rm -rf .ruff_cache
+
+check:
+	poetry run ruff src/
+
+runner: run clean 
