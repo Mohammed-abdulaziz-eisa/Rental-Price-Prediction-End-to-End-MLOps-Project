@@ -15,5 +15,6 @@ clean:
 
 check:
 	poetry run ruff src/
+	#poetry run flake8 src
 
 runner: run clean 
