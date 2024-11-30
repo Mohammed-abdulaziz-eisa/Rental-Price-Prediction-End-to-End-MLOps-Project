@@ -155,6 +155,19 @@ dmypy.json
 cython_debug/
 .DS_Store/
 .DS_Store
+.DS_Store-*
+
+# PyInstaller
+#  Packaging should ignore these files when creating a binary.
+*.pyc
+*.pyd
+*.so
+*.o
+*.whl
+*.pydist-info/
+*.egg-info/
+*.dist-info/
+*.egg
 # PyCharm
 #  JetBrains specific template is maintained in a separate JetBrains.gitignore that can
 #  be found at https://github.com/github/gitignore/blob/main/Global/JetBrains.gitignore
