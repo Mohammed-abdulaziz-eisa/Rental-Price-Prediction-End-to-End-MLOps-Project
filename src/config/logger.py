@@ -22,6 +22,7 @@ class LoggerSettings(BaseSettings):
         env_file="config/.env",
         env_file_encoding="UTF-8",
         extra="ignore",
+        protected_namespaces=('settings_',),
     )
 
     log_level: str

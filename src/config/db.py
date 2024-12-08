@@ -22,7 +22,8 @@ class DbSettings(BaseSettings):
     model_config = SettingsConfigDict(
         env_file='config/.env',
         env_file_encoding='UTF-8',
-        extra='ignore',   
+        extra='ignore',
+        protected_namespaces=('settings_',),
     )
     
     db_conn_str: str
