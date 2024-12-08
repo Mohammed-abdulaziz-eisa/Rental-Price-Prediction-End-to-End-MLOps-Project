@@ -7,33 +7,54 @@ This project is an end-to-end MLOps pipeline for predicting rental prices. The s
 ## Project Structure
 
 ```bash
+rental-price-prediction/
 │
-notebook/
+├── notebook/                  # Exploratory Data Analysis
 │   └── model_baseline.ipynb   # Baseline notebook for model evaluation
-.
-src/
 │
-├── config/                    # Configuration files
-│   └── config.py              # Project settings and database connection
-│   └── .env                   # Environment variables
-├── db/                        # Database-related scripts
-│   ├── db_model.py            # SQLAlchemy model for database table
-│   └── db_sqlite              # SQLite database
-├── models/                    # Model-related scripts and artifacts
-│   ├── model/                 # Training pipeline scripts
-│   │   ├── model.py           # Model training, evaluation, and saving
-│   │   └── model_services.py  # Model loading and prediction service
-│   └── pipe/                  # Data pipeline scripts
-│   │    ├── data_collection.py # Data collection from CSV and database
-│   │    └── data_preparation.py # Data preprocessing and feature engineering
-│   │    └── model.py           # Model training, evaluation, and saving
-│   └── model_services.py       # Model loading and prediction service
-│   └── model_baseline.ipynb    # Baseline notebook for model evaluation
-├── logs/                      # Logs directory (automatically populated)
-│   └── app.log                # Log file for the project
+├── src/
+│   ├── config/                # Configuration Management
+│   │   ├── __init__.py        # Project-wide settings and imports
+│   │   ├── .env               # Environment-specific configurations
+│   │   ├── db.py              # Database connection and settings
+│   │   ├── logger.py          # Logging configuration
+│   │   └── model.py           # Model configuration settings
 │
-└── runner.py                  # Main script to execute the prediction pipeline
-
+│   ├── db/                    # Database Interaction Layer
+│   │   ├── db_model.py        # SQLAlchemy ORM models
+│   │   └── db_sqlite          # SQLite database storage
+│
+│   ├── models/                # Machine Learning Components
+│   │   ├── pipe/              # Data Processing Pipeline
+│   │   │   ├── data_collection.py   # Data acquisition
+│   │   │   ├── data_preparation.py  # Data preprocessing
+│   │   │   └── model.py             # Model training utilities
+│   │   │
+│   │   ├── model/             # Model Training and Management
+│   │   │   ├── model.py       # Core model training logic
+│   │   │   └── model_services.py  # Model loading and prediction services
+│   │   │
+│   │   └── model_services.py  # Additional model service layer
+│
+│   ├── logs/                  # Application Logging
+│   │   └── app.log            # Centralized log file
+│
+│   └── runner.py              # Main application entry point
+│
+├── tests/                     # Optional: Test Suite
+│   ├── test_data_collection.py
+│   ├── test_model_training.py
+│   └── test_prediction.py
+│
+├── docs/                      # Optional: Project Documentation
+│   ├── architecture.md
+│   └── usage_guide.md
+│
+├── .gitignore
+├── README.md
+├── Makefile
+├── poetry.lock
+└── pyproject.toml
 ```
 
 ## Project Structure
@@ -54,6 +75,9 @@ The project is organized as follows:
 - **Docker**: Containerization for deploying the entire pipeline.
 - **DBeaver**: Database management tool. 
 - **Pickle**: Model serialization and deserialization.
+
+## ML Project Development Workflow:
+![workflow](imgs/mlflow_diagram.png)
 
 ## Key Features
 
