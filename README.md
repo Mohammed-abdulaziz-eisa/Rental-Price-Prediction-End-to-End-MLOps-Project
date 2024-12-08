@@ -12,6 +12,11 @@ rental-price-prediction/
 ├── notebook/                  # Exploratory Data Analysis
 │   └── model_baseline.ipynb   # Baseline notebook for model evaluation
 │
+│── app/
+│   ├── templates/             # HTML templates  
+│   │   └── index.html          # Index page
+│   └── app.py                 # API for prediction service
+│
 ├── src/
 │   ├── config/                # Configuration Management
 │   │   ├── __init__.py        # Project-wide settings and imports
@@ -41,12 +46,12 @@ rental-price-prediction/
 │
 │   └── runner.py              # Main application entry point
 │
-├── tests/                     # Optional: Test Suite
+├── tests/                     # Unit Test Suite
 │   ├── test_data_collection.py
 │   ├── test_model_training.py
 │   └── test_prediction.py
 │
-├── docs/                      # Optional: Project Documentation
+├── docs/                      #  ML Project Documentation
 │   ├── architecture.md
 │   └── usage_guide.md
 │
@@ -77,7 +82,7 @@ The project is organized as follows:
 - **Pickle**: Model serialization and deserialization.
 
 ## ML Project Development Workflow:
-![workflow](imgs/mlflow_diagram.png)
+![workflow](./imgs/mlflow_diagram.png)
 
 ## Key Features
 
