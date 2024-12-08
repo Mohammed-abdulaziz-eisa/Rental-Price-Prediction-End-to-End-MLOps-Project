@@ -1,14 +1,8 @@
 """
-This module is dedicated to preparing data for the machine learning pipeline by performing essential preprocessing tasks.
+This module provides functionality for preparing a dataset for ML model.
 
-The `prepare_data` function orchestrates the data preparation workflow, which includes:
-1. Loading the preprocessed dataset from the database.
-2. Encoding categorical features to prepare them for model ingestion.
-3. Parsing and transforming specific textual data, such as garden information.
-4. Binarizing certain columns to convert them into a binary format suitable for model training.
-
-Logging with Loguru is integrated throughout the process to ensure that each step is tracked and any issues are promptly identified.
-Logs are saved to the "app.log" file in the current directory, providing detailed insights into the data preparation pipeline.
+It consists of functions to load data from a database,
+encode categorical columns, and parse specific columns for further processing.
 """
 
 import pandas as pd
@@ -20,7 +14,7 @@ from sklearn.preprocessing import LabelBinarizer
 from models.pipe.data_collection import load_data_from_db
 
 
-def prepare_data():
+def prepare_data() -> pd.DataFrame:
     """
     Prepares the dataset for the machine learning pipeline by executing the necessary preprocessing steps.
 
@@ -36,9 +30,9 @@ def prepare_data():
     # make logger object to use it in the script
     logger.info("Starting up preprocessing Pipeline")
     # 1. load preprocessed dataset
-    data = load_data_from_db()
+    dataframe = load_data_from_db()
     # 2. encode categorical data
-    data_encoded = encode_cat_cols(data)
+    data_encoded = encode_cat_cols(dataframe)
     # 3. parse the garden data
     df = parse_garden_col(data_encoded)
     # 4. binarize the data
@@ -47,7 +41,7 @@ def prepare_data():
     return df
 
 
-def encode_cat_cols(data):
+def encode_cat_cols(dataframe: pd.DataFrame) -> pd.DataFrame:
     """
     Encodes categorical features into a binary format using one-hot encoding.
 
@@ -63,7 +57,7 @@ def encode_cat_cols(data):
     cols = ["balcony", "parking", "furnished", "garage", "storage"]
     logger.info(f"Dummy encoding the data {cols}")
     # print("Step 2 : Dummy encoding the data...")
-    return pd.get_dummies(data, columns=cols, drop_first=True)
+    return pd.get_dummies(dataframe, columns=cols, drop_first=True)
 
 
 # def parse_garden_col(data):
@@ -74,7 +68,7 @@ def encode_cat_cols(data):
 #         else:
 #             data.garden[i] = int(re.findall(r'\d+', data.garden[i])[0])
 #     return data
-def parse_garden_col(data):
+def parse_garden_col(dataframe: pd.DataFrame) -> pd.DataFrame:
     """
     Parses and transforms the 'garden' column from textual data to a numerical format.
 
@@ -88,13 +82,13 @@ def parse_garden_col(data):
         DataFrame: The DataFrame with the 'garden' column transformed into a numerical format.
     """
     logger.info("Parsing the garden data...")
-    data["garden"] = data["garden"].apply(
+    dataframe["garden"] = dataframe["garden"].apply(
         lambda x: 0 if x == "Not present" else int(re.findall(r"\d+", x)[0])
     )
-    return data
+    return dataframe
 
 
-def binarize_df(data):
+def binarize_df(dataframe: pd.DataFrame) -> pd.DataFrame:
     """
     Converts specified columns into a binary format.
 
@@ -108,14 +102,14 @@ def binarize_df(data):
         DataFrame: The DataFrame with binarized columns.
     """
     # print("Step 3 : Binarizing the data...")
-    binarizer_col = data[
+    binarizer_col = dataframe[
         ["balcony_yes", "storage_yes", "parking_yes", "furnished_yes", "garage_yes"]
     ]
     logger.info(f"Binarizing the data {binarizer_col}")
     label_binarizer = LabelBinarizer()
     for col in binarizer_col:
-        data[col] = label_binarizer.fit_transform(data[col])
-    return data
+        dataframe[col] = label_binarizer.fit_transform(dataframe[col])
+    return dataframe
 
 
 # # test the script

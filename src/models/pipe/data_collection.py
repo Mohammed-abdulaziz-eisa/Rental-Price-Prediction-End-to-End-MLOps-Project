@@ -1,11 +1,11 @@
 """
-This module is responsible for loading data into our data pipeline, utilizing SQLAlchemy ORM for database interaction.
+This module provides functionalities to load data from a database.
 
-The primary function, `load_data_from_db`, extracts data from the specified database table and returns it as a pandas DataFrame.
-The process involves constructing a query to select data from the `RentApartments` table and executing it through the SQLAlchemy engine.
-The resulting data is then loaded into pandas for further analysis.
-
-Logging is implemented with Loguru to track the data extraction process, providing insights into the operation's status and any potential issues.
+It includes a function to extract data from the RentApartments table
+in the database and load it into a pandas DataFrame. This module is useful
+for scenarios where data needs to be retrieved from a database for further
+analysis or processing. It uses SQLAlchemy for executing database queries
+and pandas for handling the data in a DataFrame format.
 """
 
 import pandas as pd
@@ -14,7 +14,7 @@ import pandas as pd
 from loguru import logger
 from sqlalchemy import select
 
-from config.config import engine
+from config import engine
 from db.db_model import RentApartments
 
 
@@ -25,15 +25,12 @@ def load_data(path):
     return pd.read_csv(path)
 
 
-def load_data_from_db():
+def load_data_from_db() -> pd.DataFrame:
     """
-    Extracts data from the specified database table and returns it as a pandas DataFrame.
-
-    The function first constructs a query to select all rows from the `RentApartments` table.
-    Then, it executes the query using the SQLAlchemy engine and returns the resulting DataFrame.
+    Extract the entire RentApartments table from the database.
 
     Returns:
-        pd.DataFrame: A pandas DataFrame containing the extracted data.
+        pd.DataFrame: DataFrame containing the RentApartments data.
     """
     logger.info("extracting the table from the database ...")
     query = select(RentApartments)

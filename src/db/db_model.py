@@ -1,10 +1,11 @@
 """
-This module is used for creating the database model for the rent apartment data.
+This module defines the database models using SQLAlchemy.
 
-Classes:
-    - Base : Base class for the database model.
-    - RentApartments : Database model for rent apartment data.
-
+It includes model classes for different types of real estate,
+specifically rental apartments. The module uses SQLAlchemy's
+ORM capabilities to map Python classes to database tables.
+The structure and fields of the RentApartments class are configured
+to match the corresponding database for rental apartments.
 """
 
 # third-part library
@@ -12,7 +13,7 @@ from sqlalchemy import REAL, INTEGER, VARCHAR
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 
 # local application imports
-from config.config import settings
+from config import db_settings
 
 
 class Base(DeclarativeBase):
@@ -45,7 +46,7 @@ class RentApartments(Base):
         rent (int): The rent price of the apartment.
     """
 
-    __tablename__ = settings.rent_apart_table_name
+    __tablename__ = db_settings.rent_apart_table_name
 
     address: Mapped[str] = mapped_column(VARCHAR(), primary_key=True)
     area: Mapped[float] = mapped_column(REAL())

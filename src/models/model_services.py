@@ -25,7 +25,7 @@ from loguru import logger
 from pathlib import Path
 
 # local packages
-from config.config import settings
+from config import model_setting
 from models.pipe.model import build_model
 
 
@@ -71,28 +71,28 @@ class ModelService:
         """
         logger.info(
             f"checking the existance of the model config file at "
-            f"{settings.model_path}/{settings.model_name}",
+            f"{model_setting.model_path}/{model_setting.model_name}",
         )
 
         model_path = Path(
-            f"{settings.model_path}/{settings.model_name}",
+            f"{model_setting.model_path}/{model_setting.model_name}",
         )
 
         if not model_path.exists():
             logger.warning(
-                f"model not found at {settings.model_path} "
-                f"building {settings.model_name}",
+                f"model not found at {model_setting.model_path} "
+                f"building {model_setting.model_name}",
             )
 
             build_model()
 
         logger.info(
-            f"model {settings.model_name} exists --> "
+            f"model {model_setting.model_name} exists --> "
             "loading model configuration file",
         )
 
-        with open(model_path, "rb") as model_file:
-            self.model = pk.load(model_file)
+        with open(model_path, "rb") as file:
+            self.model = pk.load(file)
 
     def predict(self, input_parameters: list) -> list:
         """
