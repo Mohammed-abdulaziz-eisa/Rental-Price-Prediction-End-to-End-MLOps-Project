@@ -81,32 +81,52 @@ The project is organized as follows:
 - **DBeaver**: Database management tool. 
 - **Pickle**: Model serialization and deserialization.
 
-## ML Project Development Workflow:
+# Full Lifecycle of ML model development and deployment: 
 ![workflow](./imgs/mlflow_diagram.png)
 
-# Key Features workflow
+## Start: ML Model in Jupyter Notebook
+
+The initial prototyping and exploration phase, where the ML model is developed and tested in a Jupyter Notebook environment.
+
+---
+
+## Module 1: Initial Model Training & Tuning
+
+Focuses on the initial training and optimization of the ML model.
+
+---
+
+## Module 2: Production Codebase Design
+
+Involves designing a production-ready codebase, including:
+- Establishing the project structure.
+- Implementing clean code practices.
+- Setting up logging and database management.
+
+---
+
+## Module 3: API Design & Implementation
+
+Covers designing and implementing APIs for the ML model:
+- Maintenance APIs.
+- Inference APIs.
+- Ensuring API security and scalability.
+
+---
+
+## Module 4: Containerization
+
+Application containerization using Docker, including:
+- Creating Docker images.
+- Managing the container lifecycle.
+- Setting up continuous delivery.
+- Implementing deployment strategies.
+
+---
+
+## Final Outcome: Production-Ready ML Service
+
+A production-ready ML service that can be seamlessly deployed and scaled as needed.
+
+## ML Project Development Workflow:
 ![workflow](./imgs/workflow.png)
-
-## Key Features
-
-1. **Data Ingestion**:
-   - Load data from a CSV file or directly from a database.
-   - Utilizes SQLAlchemy ORM to manage database connections and queries.
-
-2. **Data Preprocessing**:
-   - Categorical feature encoding, data binarization, and garden data parsing.
-   - Scalable and modular preprocessing pipeline using `data_collection.py` and `data_preparation.py`.
-
-3. **Model Training**:
-   - Train a Random Forest model with hyperparameter tuning using GridSearchCV.
-   - Automatically saves the best model as a `.pkl` file for later use.
-
-4. **Prediction Service**:
-   - Provides a service for loading the model and making predictions.
-   - The `runner.py` script allows end-to-end execution of the prediction pipeline.
-
-5. **Logging**:
-   - Comprehensive logging with Loguru to monitor each step of the pipeline.
-
-6. **Deployment**:
-   - Ready to be containerized with Docker for consistent and scalable deployment.
