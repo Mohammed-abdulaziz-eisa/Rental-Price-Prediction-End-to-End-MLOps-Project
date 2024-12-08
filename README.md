@@ -84,6 +84,9 @@ The project is organized as follows:
 ## ML Project Development Workflow:
 ![workflow](./imgs/mlflow_diagram.png)
 
+# Key Features workflow
+![workflow](./imgs/workflow.png)
+
 ## Key Features
 
 1. **Data Ingestion**:
