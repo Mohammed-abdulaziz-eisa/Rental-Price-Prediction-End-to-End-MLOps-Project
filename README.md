@@ -62,9 +62,8 @@ rental-price-prediction/
 └── pyproject.toml
 ```
 
-## Project Structure
 
-The project is organized as follows:
+
 ## Tools and Packages Used
 
 - **Python**: Core programming language for building the pipeline.
