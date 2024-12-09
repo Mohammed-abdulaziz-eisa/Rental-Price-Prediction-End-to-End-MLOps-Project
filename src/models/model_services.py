@@ -39,14 +39,14 @@ class ModelService:
 
     Attributes
     ----------
-    model : object
+        model : object
         the ML model object loaded from a pickle file
 
     Methods
     -------
-    __init__(self) : Constructor that initializes the model object
-    load_model(self) : Loads the model from a pickle file if it exists else builds one
-    predict(self, input_parameters) : Makes a prediction using the loaded model by passing input parameters
+        __init__(self) : Constructor that initializes the model object
+        load_model(self) : Loads the model from a pickle file if it exists else builds one
+        predict(self, input_parameters) : Makes a prediction using the loaded model by passing input parameters
 
     """
 
