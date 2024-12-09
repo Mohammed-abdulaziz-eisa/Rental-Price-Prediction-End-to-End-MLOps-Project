@@ -20,7 +20,8 @@ from models.pipe.data_preparation import prepare_data
 
 def build_model() -> None:
     """
-    Coordinates the end-to-end process of building, training, and saving the machine learning model.
+    Coordinates the end-to-end process of building, training, and saving
+    the machine learning model.
     The `build_model` function orchestrates the entire model building process
 
     Returns:
@@ -31,22 +32,22 @@ def build_model() -> None:
     # 1 - loading the data from prepare script
     data = prepare_data()
     feature_names = [
-        'area',
-        'constraction_year',
-        'bedrooms',
-        'garden',
-        'balcony_yes',
-        'parking_yes',
-        'furnished_yes',
-        'garage_yes',
-        'storage_yes',
+        "area",
+        "constraction_year",
+        "bedrooms",
+        "garden",
+        "balcony_yes",
+        "parking_yes",
+        "furnished_yes",
+        "garage_yes",
+        "storage_yes",
     ]
     # 2- identify the X and y variables
     # print("Building model...")
     X, y = _get_X_y(
-                   data,
-                   col_x = feature_names,
-            )
+        data,
+        col_x=feature_names,
+    )
     X_train, X_test, y_train, y_test = _split_train_test(
         X,
         y,
@@ -69,7 +70,7 @@ def build_model() -> None:
 def _get_X_y(
     data: pd.DataFrame,
     col_x: list[str],
-    col_y: str = 'rent',   
+    col_y: str = "rent",
 ) -> tuple[pd.DataFrame, pd.Series]:
     """
     Split the dataset into feature and target variables.
@@ -84,8 +85,9 @@ def _get_X_y(
             - X (DataFrame): The feature Variable.
             - y (Series): The target variable.
     """
-    logger.info(f" definign X and X variables. X variables : {col_x}; y variables : {col_y}")
+    logger.info(f" definign X and X variables.{col_x} ; {col_y}")
     return data[col_x], data[col_y]
+
 
 def _split_train_test(
     features: pd.DataFrame,
@@ -109,16 +111,10 @@ def _split_train_test(
             - y_test (pd.Series): The testing target variable.
     """
     logger.info("splitting data into train and test sets ")
-    return train_test_split(
-        features,
-        target,
-        test_size=0.2,
-        random_state=42
-    )
+    return train_test_split(features, target, test_size=0.2, random_state=42)
 
 
-
-# def train_model(X_train, X_test , y_train , y_test):
+#  def train_model(X_train, X_test , y_train , y_test):
 #     rf = RandomForestRegressor()
 #     rf.fit(X_train , y_train)
 #     model_score = rf.score(X_test , y_test)
@@ -130,35 +126,37 @@ def _train_model(
     y_train: pd.Series,
 ) -> RandomForestRegressor:
     """
-    Trains a Random Forest Regressor model with hyperparameter using GridSearchCV.
+    Trains a Random Forest Regressor with hyperparameter using GridSearchCV.
 
-    The function searches for the best hyperparameters for the Random Forest Regressor model
-    from specified trains the model in the training data.
+    The function searches for the best hyperparameters for the Random Forest
+    Regressor model from specified trains the model in the training data.
 
     Args:
         X_train (pd.DataFrame): The Training set features.
         y_train (pd.Series): The Training set target variable.
 
     Returns:
-        RandomForestRegressor:  The best-performed Random Forest Regressor model with hyperparameters.
+        RandomForestRegressor:  The best-performed model hyperparameter.
     """
     logger.info("training a model with hyperparameters")
     grid_param = {
         "n_estimators": range(50, 100, 20),
-        "criterion": ["squared_error", "poisson", "absolute_error", "friedman_mse"],
+        "criterion": [
+                      "squared_error",
+                      "poisson",
+                      "absolute_error",
+                      "friedman_mse"
+                      ],
         "max_depth": range(6, 12, 2),
     }
     logger.debug(f"grid param : {grid_param}")
     grid = GridSearchCV(
-        RandomForestRegressor(),
-        param_grid=grid_param,
-        cv=5,
-        n_jobs=-1
-    )
-    model_grid = grid.fit(
-        X_train,
-        y_train
-    )
+                        RandomForestRegressor(),
+                        param_grid=grid_param,
+                        cv=5,
+                        n_jobs=-1
+                        )
+    model_grid = grid.fit(X_train, y_train)
     # best_model_param = model_grid.best_params_
     # best_model_score = model_grid.best_score_
     # print("Train score: " , model_grid.best_score_)
@@ -171,26 +169,24 @@ def _evalute_model(
     y_test: pd.Series,
 ) -> float:
     """
-    Evaluates the performance of the trained Random Forest Regerssor on the data.
+    Evaluates the performance of the trained model on the data.
 
-    This Function calculates and logs the model R^2 score, which indicates how well
-    the model predicts the target variable on the test set.
+    This Function calculates and logs the model R^2 score, which indicates
+    how well the model predicts the target variable on the test set.
 
     Args:
-        model (RandomForestRegressor): The trained Random Forest Regressor model.
+        model (RandomForestRegressor): The trained Random Forest Regressor.
         X_test (pd.DataFrame): The Test set features.
         y_test (pd.Series): The Test set target variable.
 
     Returns:
         float: The R^2 score of the model on the test set.
     """
-    model_score= model.score(
+    model_score = model.score(
         X_test,
         y_test,
     )
-    logger.info(
-        f"evaluting the model performance with score : {model_score}"
-    )
+    logger.info(f"evaluting the model performance with score : {model_score}")
     return model_score
 
 
@@ -198,18 +194,17 @@ def _save_model(model: RandomForestRegressor) -> None:
     """
     Saves the trained model to a specified directory as a pickle file.
 
-    The function uses the path and file name defined in the settings to save the model.
+    The function uses the path and file name defined in the settings
+    configuration to save the model.
 
     Args:
-        model (RandomForestRegressor): The trained Random Forest Regressor model to be saved.
+        model (RandomForestRegressor): The trained model to be saved.
 
     Returns:
         None
     """
-    model_path = f'{model_setting.model_path}/{model_setting.model_name}'
-    logger.info(
-        f"saving the model to directory : {model_path}"
-    )
+    model_path = f"{model_setting.model_path}/{model_setting.model_name}"
+    logger.info(f"saving the model to directory : {model_path}")
     with open(model_path, "wb") as model_file:
         pkl.dump(model, model_file)
 

@@ -19,15 +19,15 @@ class ModelSettings(BaseSettings):
         model_name (str): Name of the model file.
     """
 
-    model_config= SettingsConfigDict(
-        env_file='config/.env',
-        env_file_encoding='UTF-8',
-        extra='ignore',
-        protected_namespaces=('settings_',),
+    model_config = SettingsConfigDict(
+        env_file="config/.env",
+        env_file_encoding="UTF-8",
+        extra="ignore",
+        protected_namespaces=("settings_",),
     )
-    
+
     model_path: DirectoryPath
     model_name: str
-    
+
 
 model_setting = ModelSettings()

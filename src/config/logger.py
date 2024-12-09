@@ -11,7 +11,7 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 class LoggerSettings(BaseSettings):
     """
-    Logger Settings configuration for the application. 
+    Logger Settings configuration for the application.
 
     Attributes:
         model_config (SettingsConfigDict): Model config, Load from .env file.
@@ -22,7 +22,7 @@ class LoggerSettings(BaseSettings):
         env_file="config/.env",
         env_file_encoding="UTF-8",
         extra="ignore",
-        protected_namespaces=('settings_',),
+        protected_namespaces=("settings_",),
     )
 
     log_level: str
@@ -35,10 +35,10 @@ def configure_logging(log_level: str) -> None:
     Arg:
         log_level (str): The log level to be set for the logger.
 
-    Return:
+    Returns:
         None
     """
-    
+
     # to remove the console output from loguru showing it only in the log file
     # logger.remove()
     logger.add(
@@ -47,6 +47,7 @@ def configure_logging(log_level: str) -> None:
         retention="2 weeks",
         level=log_level,
     )
-    
+
+
 # intializing the setting an logging configure
 configure_logging(log_level=LoggerSettings().log_level)
