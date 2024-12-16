@@ -1,4 +1,4 @@
-.PHONY: install run clean check
+.PHONY: run install clean check runner
 .DEFAULT_GOAL:= runner  
 
 run: install 
@@ -14,7 +14,7 @@ clean:
 	rm -rf .ruff_cache
 
 check:
-	poetry run ruff src/
-	#poetry run flake8 src
+	#poetry run ruff src/
+	poetry run flake8 src/
 
-runner: run clean 
+runner: check run clean 
