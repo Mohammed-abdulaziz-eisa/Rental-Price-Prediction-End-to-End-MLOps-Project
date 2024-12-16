@@ -12,11 +12,13 @@ rental-price-prediction/
 ├── notebook/                  # Exploratory Data Analysis
 │   └── model_baseline.ipynb   # Baseline notebook for model evaluation
 │
-│── app/
-│   ├── templates/             # HTML templates  
-│   │   └── index.html          # Index page
-│   └── app.py                 # API for prediction service
-│
+│── .github/                    # Github Actions for CI/CD workflow 
+│   ├── actions/                # CI/CD actions for automated testing and deployment
+│   │   └── build-application   # Building the application
+│   │       └── action.yml      # Github Action workflow for building the application
+│   ├── workflows/              # CI/CD workflows for linting, testing, and deployment
+│       └── lint.yml
+│           
 ├── src/
 │   ├── config/                # Configuration Management
 │   │   ├── __init__.py        # Project-wide settings and imports
