@@ -37,12 +37,13 @@ rental-price-prediction/
 │   │   │   ├── data_preparation.py  # Data preprocessing
 │   │   │   └── model.py             # Model training utilities
 │   │   │
-│   │   ├── model/             # Model Training and Management
-│   │   │   ├── model.py       # Core model training logic
-│   │   │   └── model_services.py  # Model loading and prediction services
+│   │   ├── model/                  # Model saved path 
+│   │   │   ├── base_rf.pkl        # Random Forest model trained on real estate data
+│   │   │   └── hypered_rf.pkl     # Random Forest model trained on real estate data with hyperparameter tuning
 │   │   │
-│   │   └── model_services.py  # Additional model service layer
-│
+│   │   └── model_builder.py    # ModelBuilderServices for model training
+│       │── model_inference.py  # ModelBuilderServices for model inference Predication
+│ 
 │   ├── logs/                  # Application Logging
 │   │   └── app.log            # Centralized log file
 │
