@@ -325,3 +325,8 @@
 2024-12-18 02:43:17.769 | INFO     | models.model_inference:load_model:71 - model base_rf.pkl exists --> loading model configuration file
 2024-12-18 02:43:18.802 | INFO     | models.model_inference:predict:90 - input parameters : [85, 2015, 2, 20, 1, 1, 0, 0, 1] 
 2024-12-18 02:43:18.809 | INFO     | __main__:main:48 - Prediction: [2034.28085078]
+2024-12-19 21:42:01.107 | INFO     | __main__:main:32 - running the runner script ...
+2024-12-19 21:42:01.108 | INFO     | models.model_inference:load_model:55 - checking the existance of the model config file at models/model/base_rf.pkl
+2024-12-19 21:42:01.108 | INFO     | models.model_inference:load_model:71 - model base_rf.pkl exists --> loading model configuration file
+2024-12-19 21:42:02.514 | INFO     | models.model_inference:predict:90 - input parameters : [85, 2015, 2, 20, 1, 1, 0, 0, 1] 
+2024-12-19 21:42:02.521 | INFO     | __main__:main:48 - Prediction: [2034.28085078]
