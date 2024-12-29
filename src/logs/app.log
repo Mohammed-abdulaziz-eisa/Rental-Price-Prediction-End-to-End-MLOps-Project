@@ -50,3 +50,8 @@
 2024-12-29 22:04:22.986 | DEBUG    | models.pipe.model:_train_model:152 - grid param : {'n_estimators': range(50, 100, 20), 'criterion': ['squared_error', 'poisson', 'absolute_error', 'friedman_mse'], 'max_depth': range(6, 12, 2)}
 2024-12-29 22:04:34.220 | INFO     | models.pipe.model:_evalute_model:189 - evaluting the model performance with score : 0.7066125087363531
 2024-12-29 22:04:34.221 | INFO     | models.pipe.model:_save_model:207 - saving the model to directory : models/model/base_rf.pkl
+2024-12-29 22:06:53.600 | INFO     | __main__:main:32 - running the runner script ...
+2024-12-29 22:06:53.601 | INFO     | models.model_inference:load_model:55 - checking the existance of the model config file at models/model/base_rf.pkl
+2024-12-29 22:06:53.601 | INFO     | models.model_inference:load_model:71 - model base_rf.pkl exists --> loading model configuration file
+2024-12-29 22:06:54.729 | INFO     | models.model_inference:predict:90 - input parameters : [85, 2015, 2, 20, 1, 1, 0, 0, 1] 
+2024-12-29 22:06:54.736 | INFO     | __main__:main:48 - Prediction: [2037.71958858]
