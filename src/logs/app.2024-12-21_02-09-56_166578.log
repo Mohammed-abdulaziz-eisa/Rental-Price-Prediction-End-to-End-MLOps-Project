@@ -1,0 +1,5 @@
+2024-12-21 02:09:56.163 | INFO     | __main__:main:32 - running the runner script ...
+2024-12-21 02:09:56.166 | INFO     | models.model_inference:load_model:55 - checking the existance of the model config file at models/model/base_rf.pkl
+2024-12-21 02:09:56.166 | INFO     | models.model_inference:load_model:71 - model base_rf.pkl exists --> loading model configuration file
+2024-12-21 02:09:57.557 | INFO     | models.model_inference:predict:90 - input parameters : [85, 2015, 2, 20, 1, 1, 0, 0, 1] 
+2024-12-21 02:09:57.562 | INFO     | __main__:main:48 - Prediction: [2014.82335203]
