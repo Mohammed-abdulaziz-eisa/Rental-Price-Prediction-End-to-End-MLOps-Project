@@ -6,7 +6,7 @@ authors = ["0xnrous <0xnrous@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.9"
+python = "^3.13"
 regex = "^2024.4.28"
 scikit-learn = "^1.4.2"
 numpy = "^1.26.4"
@@ -17,6 +17,7 @@ loguru = "^0.7.2"
 sqlalchemy = "^2.0.32"
 ruff = "^0.8.1 " # for linting the code
 flake8 = "^7.1.1"
+scipy = "^1.15.1"
 
 
 [build-system]
